@@ -1,0 +1,132 @@
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+/* Sidebar Container */
+.sidebar { 
+    width: 115px; /* Adjusted width */
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #ffffff; /* White background */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000; /* Lower z-index for sidebar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Josefin Sans', sans-serif; /* Apply the Google Font */
+
+    
+}
+
+/* Sidebar List */
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    margin-left: 1rem;
+}
+
+/* Sidebar List Item */
+.sidebar li:nth-child(6) {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #ddd; /* Separator */
+}
+
+/* Sidebar List Item Spacing */
+.sidebar li + li {
+    margin-top: .75rem;
+}
+
+/* Sidebar Links */
+.sidebar a {
+    color: #000; /* Black text color */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid #28a745;
+}
+
+/* Sidebar Links Hover, Focus, Active States */
+.sidebar a:hover, .sidebar a:focus, .sidebar a.active {
+    background-color: #00ff7b; /* Hover/focus background */
+    outline: 0;
+}
+
+/* Sidebar Icons */
+.sidebar a i {
+    font-size: 1.375rem;
+    color: #1a1c1a; /* Dark icon color */
+    margin: auto;
+}
+
+/* Sidebar Tooltips */
+.sidebar a span {
+    position: absolute;
+    background-color: #333; /* Dark tooltip background */
+    white-space: nowrap;
+    padding: .5rem 1rem;
+    border-radius: 6px;
+    left: calc(100% + 1.5rem);
+    transform-origin: center left;
+    transform: scale(0);
+    opacity: 0;
+    transition: .15s ease;
+    color: #ffffff; /* White tooltip text */
+}
+
+/* Sidebar Tooltips Visible State */
+.sidebar a:hover span, .sidebar a:focus span, .sidebar a.active span {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Logout Form */
+.sidebar .logout-form {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+/* Logout Button */
+.sidebar .logout-button {
+    background-color: #ffffff; /* White background */
+    color: black; /* Black text color */
+    border: none; /* Remove default border */
+    border: 1px solid #28a745; /* Border color */
+    font-size: 0.90rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    text-align: center; /* Center text */
+    display: inline-block; /* Inline-block display */
+}
+
+/* Logout Button Hover State */
+.sidebar .logout-button:hover {
+    background-color: #28a745; /* Green background on hover */
+}
+
+/* Logout Button Focus State */
+.sidebar .logout-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Custom focus outline */
+}
+
+/* Hide sidebar on small screens */
+@media (max-width: 768px) { /* Adjust the max-width as needed */
+    .sidebar {
+        display: none; /* Hides the sidebar */
+    }
+}

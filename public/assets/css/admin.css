@@ -1,0 +1,434 @@
+
+
+    .terms-checkbox-container {
+        display: flex;
+        gap: 8px; 
+    }
+
+    .terms-checkbox-container input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-left: 35%;
+
+    }
+
+    .terms-checkbox-container .terms-text {
+        font-size: 14px; 
+        line-height: 1.5; 
+        color: green;
+        font-weight: bolder;
+margin-right: 25%;
+
+    }
+
+/* Reset and basic styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+}
+
+.background-side,.container {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Full height */
+}
+
+.background-side {
+    margin: 0;
+    padding: 0;
+    height: 102vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideshow 90s infinite; /* Add animation for the slideshow */
+    width: 60%; /* Half width */
+    position: relative; /* Positioning context for overlay */
+}
+
+@keyframes slideshow {
+    0% { background: url('/assets/img/7.jpg') no-repeat center center fixed; background-size: cover; }
+    33% { background: url('/assets/img/1.jpg') no-repeat center center fixed; background-size: cover; }
+    40% { background: url('/assets/img/3.jpg') no-repeat center center fixed; background-size: cover; }
+    55% { background: url('/assets/img/5.jpg') no-repeat center center fixed; background-size: cover; }
+    70% { background: url('/assets/img/6.jpg') no-repeat center center fixed; background-size: cover; }
+    80% { background: url('/assets/img/2.jpg') no-repeat center center fixed; background-size: cover; }
+}
+
+.background-side::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% transparency */
+    z-index: 1; /* Ensure the overlay is on top of the background */
+}
+
+.login-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 610px;
+    width: 100%; /* Full width for the form */
+    z-index: 2; /* Ensure the form content is above the overlay */
+    margin: 0 auto; /* Center the form horizontally */
+    position: relative;
+}
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Remaining styles... */
+.field {
+    margin-bottom: 5px;
+}
+
+.input-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #333;
+}
+
+input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #2bff59;
+    background-color: #2bff59;
+    color: #060606;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+button:hover {
+    background-color: #20c503;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+.link {
+    margin-top: 20px;
+}
+
+/* Align checkbox and forgot password link */
+.form-footer {
+    align-items: center;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}
+
+
+.form-footer input[type="checkbox"] {
+    margin-right: 0px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
+
+/* Icons */
+.fas {
+    margin-right: 8px;
+    color: #2bff59;
+}
+
+p {
+    font-size: 12px; /* Change the size as needed */
+    color: #040505;
+}
+
+.logo {
+    display: block;               /* Ensures it takes up a full block */
+    margin: 0 auto 0px;         /* Centers the logo and adds space below */
+    width: 300px;            /* Set the max width of the logo */
+    height: 250px;                /* Maintain the aspect ratio */
+    border-radius: 10px;         /* Optional: Add rounded corners */
+}
+
+
+
+
+/* Popup Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 3; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.privacy-checkbox-container {
+    display: flex;
+    align-items:baseline;
+    margin-left: -40%;
+    
+}
+
+input[type="checkbox"] {
+    margin-left: 0; /* Remove any default margin or padding */
+    vertical-align: middle; /* Ensures the checkbox is vertically aligned with the text */
+}
+
+.privacy-text {
+    margin-left: -48%;
+    
+   }
+
+/* Responsive Styles for Small Screens (e.g., smartphones) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack the background and form vertically */
+        position: relative; /* Create positioning context */
+    }
+
+    .background-side {
+        width: 100%; /* Full width for the background on small screens */
+        height: 100%; /* Full height to cover the form */
+        position: absolute; /* Overlay the background */
+        top: 0; /* Align to the top of the container */
+        left: 0; /* Align to the left of the container */
+        z-index: 1; /* Place it behind the login form */
+    }
+
+    .login-form {
+        max-width: 90%; /* Allow the form to take up more space on smaller screens */
+        margin: auto; /* Center the form */
+        padding: 20px; /* Reduce padding for smaller screens */
+        z-index: 2; /* Ensure the form appears above the background */
+        position: relative; /* Position it above the background */
+    }
+
+    .logo {
+        width: 200px; /* Smaller logo for mobile */
+        height: 150px; /* Adjust the logo size */
+    }
+
+    footer {
+        position: relative; /* Make footer not fixed at the bottom */
+        padding-bottom: 20px; /* Add some space */
+    }
+
+    .form-footer {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    
+    .form-footer input[type="checkbox"] {
+        margin-right: 2px; /* Space between checkbox and label */
+        vertical-align: middle; /* Align checkbox vertically with text */
+    }
+
+    .form-footer .remember-text {
+        margin-left: 0; /* Remove margin-left */
+    }
+
+    .form-footer label {
+        display: flex; /* Use flexbox to align checkbox and text */
+        align-items: center; /* Vertically align checkbox and text */
+    }
+
+    .form-footer .privacy-text {
+        margin-left: -8; /* Remove margin */
+    }
+
+    /* Reduce font size for mobile */
+    p, a {
+        font-size: 14px;
+    }
+}
+@media (min-width: 230px) and (max-width: 352px) {
+    .privacy-text {
+        font-size: 11px;
+        
+       } 
+    .privacy-checkbox-container {
+    display: flex;
+    align-items:baseline;
+    margin-left: -55%;
+    }
+
+    .remember-text,.underline.text-sm{
+        font-size: 10px;
+        font-weight: 600px;
+        display: flex;
+        align-items:baseline;
+
+    }
+    .form-footer {
+        align-items: center;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        
+    }
+}
+
+@media (min-width: 353px) and (max-width: 478px) {
+    .privacy-text {
+        font-size: 14px;
+        
+       } 
+       .privacy-checkbox-container {
+        display: flex;
+        align-items:baseline;
+        margin-left: -55%;
+        }
+
+    .remember-text,.underline.text-sm{
+        font-size: 14px;
+        font-weight: 600px;
+        display: flex;
+        align-items:baseline;
+
+    }
+}
+
+/* Extra Small Devices (phones, 480px and below) */
+@media (min-width: 480px) and (max-width: 769px) {
+    .background-side {
+        height: 100%; /* Full height on extra small devices */
+    }
+
+    .login-form {
+        padding: 15px; /* Adjust padding for extra small devices */
+    }
+
+    .logo {
+        width: 180px; /* Even smaller logo */
+        height: 140px; /* Adjust height accordingly */
+    }
+
+    h2 {
+        font-size: 18px; /* Adjust heading size */
+    }
+
+    input {
+        padding: 10px; /* Adjust input field padding */
+    }
+
+    button {
+        padding: 10px 30px; /* Adjust button padding */
+    }
+
+    footer p {
+        font-size: 12px; /* Smaller font size for the footer */
+    }
+    .privacy-checkbox-container {
+        display: flex;
+        align-items:baseline;
+        margin-left: -35%;
+        }
+}
+
+@media (min-width: 769px) and (max-width: 1083px) {
+    .background-side, .container {
+        height: 120vh;
+    }
+    .privacy-checkbox-container {
+        display: flex;
+        align-items:baseline;
+        margin-left: -40%;
+        }
+}
+
+@media (min-width: 1083px) and (max-width: 2000px) {
+    .background-side, .container {
+        height: 120vh;
+    }
+    .container {
+        width: 1000%;
+        box-shadow: white;
+    }
+
+
+}

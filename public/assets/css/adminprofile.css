@@ -1,0 +1,127 @@
+body {
+    background-color: #f9f9fa;
+    font-family: 'Josefin Sans', sans-serif; /* Apply the Google Font */
+    background: url('/assets/img/14166060531_1cf1140c4e_b.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    margin: 0;
+    min-height: 80vh;
+    z-index: 0;
+}
+
+/* Full-page background overlay */
+body::before {
+    content: '';
+    position: fixed; /* Fix it to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Cover full width */
+    height: 100vh; /* Cover full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: 0; /* Behind all content */
+    pointer-events: none; /* Ensure it doesn't interfere with interactions */
+}
+
+.card.user-card-full {
+    margin-top: 10%;
+}
+
+/* Main card layout */
+.user-card-full {
+    position: relative; /* Ensures proper stacking with overlay */
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(69, 90, 100, 0.2);
+    margin-left: 200px; /* Center the card */
+    max-width: 1000px;
+    width: 100%; /* Ensure the card takes full width on small screens */
+    z-index: 1; /* Ensure it's above the background overlay */
+}
+
+/* Profile section styling */
+.user-profile {
+    border-radius: 10px 10px 0 0;
+    padding: 20px;
+    background: radial-gradient(circle at top left, #b9fbc0, #a0e2a6, #8bd68e 30%, #6bcf54 50%, #4bbd35 70%, #f6d365 90%, #f3c96a);
+    color: white;
+    text-align: center;
+}
+
+.user-profile img {
+    border-radius: 20%;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.f-w-600 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+p {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Edit button styling */
+.btn-edit {
+    background-color: #5fee5a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-edit:hover {
+    background-color: #15b500;
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+    .user-card-full {
+        margin: 2px;
+        width: 100%; /* Make the card take full width */
+        box-shadow: none; /* Reduce shadow for smaller screens */
+        margin-top: 910%;
+    }
+    .card.user-card-full {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    .user-profile {
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    /* Adjust image size for smaller screens */
+    .user-profile img {
+        width: 150px;
+        height: 180px;
+    }
+
+    .card-block {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .user-profile img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .f-w-600 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

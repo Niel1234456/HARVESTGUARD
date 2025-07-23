@@ -1,0 +1,440 @@
+/*Custom Styling for Pagination */
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+}
+
+.pagination .active .page-link {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.pagination .disabled .page-link {
+    background-color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+.pagination .disabled .page-link {
+    background-color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: calc(var(--heading-height) * 0.5);
+    padding: 10px;
+    background: linear-gradient(to right, #4CAF50, #2E8B57);
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgb(250, 248, 248);
+    transition: all 0.3s ease;
+}
+
+h1:hover {
+    color: #d3de00;
+    background: linear-gradient(to right, #2E8B57, #4CAF50);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Layout */
+.container-body {
+    max-width: 90vw;
+    padding: 2rem;
+}
+
+.content {
+    padding: 2rem;
+    margin-left: 120px; /* Move content to the right */
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Card */
+.card {
+    flex: 1 1 calc(33.333% - 1rem);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Table */
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+th {
+    background: linear-gradient(to bottom, #00940c, #006400);
+    font-weight: 600;
+    color: #dee2e6;
+}
+
+/* Table Styles */
+.table-bordered {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+/* Stripe Rows */
+.table-striped tr:nth-child(odd) {
+    background-color: var(--light);
+}
+
+/* Utility Classes */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+/* General Button Styling */
+.btn-custom {
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-custom:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Specific Button Styles */
+.btn-view-report {
+    background-color: #f1c40f;
+    color: #333;
+}
+
+.btn-view-report:hover {
+    background-color: #f39c12;
+}
+
+.btn-download-pdf {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+.btn-download-pdf:hover {
+    background-color: #d35400;
+}
+
+.btn-danger-custom {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-danger-custom:hover {
+    background-color: #c0392b;
+}
+
+/* Table Actions */
+.table-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Column Width Adjustments */
+th.name-column, td.name-column {
+    width: 15%;
+    text-align: center;
+}
+
+/* Tooltips */
+.tooltip-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    width: auto;
+    max-width: 300px;
+    max-height: 650px; /* Set a maximum height for the tooltip */
+    transition: opacity 0.3s ease;
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
+}
+
+
+/* Colors */
+:root {
+    --heading-height: 30px;
+}
+
+#searchInput {
+    width: 50%;
+    max-width: 400px;
+    margin-bottom: 5px;
+    padding: 8px;
+    border: 1px solid #00ad34;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 0;
+}
+
+#searchInput:focus {
+    border-color: #00ad34;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Styles for Sort Select */
+#sortSelect {
+    width: 50%;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid #00ad34;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#sortSelect:focus {
+    border-color: #00ad34;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Text Link Styled as Button */
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+    color: #e2e2e2;
+}
+
+.tooltip-content {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    opacity: 0; /* Start as invisible */
+    transform: translate(-50%, -50%) scale(0.8); /* Start smaller and adjust for centering */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Add transitions */
+    display: none; /* Hidden by default */
+    width: 90%; /* Set a responsive width */
+    max-width: 1000px; /* Limit the width for larger screens */
+    position: fixed; /* Fixed positioning for full viewport centering */
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Add shadow for background effect */
+    z-index: 1000; /* Ensure it's above other elements */
+    border: 2px solid #28a745;
+}
+
+.tooltip-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 999; /* Below tooltip but above other content */
+    display: none; /* Hidden by default */
+}
+
+.tooltip-content.show {
+    opacity: 1; /* Fully visible */
+    transform: translate(-50%, -50%) scale(1); /* Center and scale to normal size */
+    display: block; /* Show the element */
+}
+
+a {
+    color: black;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+        padding: 8px;
+    }
+    body{
+        margin-right: -2%;
+    }
+    .container-body {
+        max-width: 100%;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .card {
+        flex: 1 1 100%; /* Stack the cards on smaller screens */
+    }
+
+    #searchInput, #sortSelect {
+        width: 100%; /* Make inputs full-width on mobile */
+        max-width: 100%;
+    }
+}
+
+
+
+/* Responsive Design for Tables */
+@media screen and (max-width: 768px) {
+    table {
+        font-size: 0.85rem; /* Adjust font size for smaller screens */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        display: block; /* Make table block-level for scrolling */
+        
+    }
+
+    table thead {
+        display: none; /* Hide the table header on smaller screens */
+    }
+
+    table tr {
+        margin-left: 4em;
+        margin-top: 2%;
+        display: block;
+        width: 110%;
+        margin-bottom: 1rem; /* Add space between rows */
+        border: 1px solid #dee2e6; /* Add borders to rows for clarity */
+    }
+    table td {
+
+        display: block;
+        text-align: center; /* Center the table details */
+        position: relative;
+        padding-left: 50%; /* Add space for labels */
+        border-bottom: 1px solid #ffffff;
+    }
+
+    table td::before {
+        /* Add pseudo-element labels before each column content */
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+        
+    }
+
+    table td:last-child {
+        border-bottom: none; /* Remove bottom border from the last column */
+    }
+
+    /* Optional: Hide overflow and make responsive scroll bar */
+    .table-wrapper {
+        overflow-x: auto;
+        max-width: 100%;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-wrapper::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+/* For even smaller screens (like mobile portrait mode) */
+@media screen and (max-width: 480px) {
+    table td {
+        font-size: 0.7rem; /* Adjust font size for even smaller screens */
+    }
+
+    table td::before {
+        font-size: 0.75rem;
+    }
+
+    /* Optional: Adjust padding for smaller screens */
+    table td {
+        padding: 10px 15px;
+    }
+
+    
+}

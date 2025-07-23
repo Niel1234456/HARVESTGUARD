@@ -1,0 +1,556 @@
+/* General Table Styling */
+
+:root {
+    --heading-height: 40px; /* Adjust this value as needed */
+
+}
+ /*Custom Styling for Pagination */
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+}
+
+.pagination .active .page-link {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.pagination .disabled .page-link {
+    background-color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+.pagination .disabled .page-link {
+    background-color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+
+.container.mt-4{
+    margin-left: 15%;
+}
+.dynamic-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden;
+    background-color: #fff; /* White background for better contrast */
+    
+}
+
+/* Table Header Styling */
+.dynamic-table thead th {
+    background-color: #00940c;
+    color: white;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #ddd;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+/* Row Number Column */
+.dynamic-table th:first-child, .dynamic-table td:first-child {
+    width: 50px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+/* Cell Padding and Border */
+.dynamic-table th, .dynamic-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle; /* Vertically center the content */
+    
+}
+
+/* Zebra Striping */
+.dynamic-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.dynamic-table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* Hover Effect */
+.dynamic-table tbody tr:hover {
+    background-color: #e9f7ef;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transform: scale(1.01); /* Slight scale effect on hover */
+}
+
+/* Action Buttons */
+.dynamic-table .btn {
+    font-size: 14px;
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.dynamic-table .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Colors */
+.dynamic-table .btn-warning {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+}
+
+.dynamic-table .btn-danger {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+}
+
+.dynamic-table .btn-success {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+}
+
+/* Button Hover Effects */
+.dynamic-table .btn-warning:hover {
+    background-color: #ec971f;
+}
+
+.dynamic-table .btn-danger:hover {
+    background-color: #c9302c;
+}
+
+.dynamic-table .btn-success:hover {
+    background-color: #449d44;
+}
+
+/* Column Count Styling */
+.dynamic-table thead th:first-child {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Modal Button */
+.dynamic-table .btn-success.mb-3 {
+    margin-top: 20px;
+    background-color: #28a745;
+    border: none;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dynamic-table .btn-success.mb-3:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Enhanced Zebra Striping */
+.dynamic-table tbody tr:nth-child(odd) {
+    background-color: #f6f6f6;
+}
+
+.dynamic-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+/* Highlight the First Column */
+.dynamic-table th:first-child, .dynamic-table td:first-child {
+    background-color: #e9ecef;
+}
+
+/* Border Radius for First and Last Child */
+.dynamic-table tbody tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
+
+.dynamic-table tbody tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+
+.dynamic-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.dynamic-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* Add subtle gradient to headers */
+.dynamic-table thead th {
+    background: linear-gradient(to bottom, #00940c, #006400);
+}
+.dynamic-table thead #columnLabels th {
+    background: #ffffff;
+    color: rgb(9, 9, 9); /* Optional: to ensure text is readable against the gradient */
+    text-align: center; /* Optional: to center-align the text */
+    height: 10px;
+}
+
+/* Add subtle box shadow to rows */
+.dynamic-table tbody tr {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Caption Styling */
+.dynamic-table caption {
+    caption-side: bottom;
+    text-align: right;
+    padding: 10px;
+    font-style: italic;
+    color: #777;
+}
+
+/* Tooltip for headers */
+.dynamic-table thead th[title] {
+    position: relative;
+    cursor: help;
+}
+
+.dynamic-table thead th[title]:hover:after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background: #333;
+    color: #fff;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 2;
+}
+.container {
+    max-width: 1200px; /* Limit the maximum width for larger screens */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding around the container */
+}
+
+/* Heading Styling */
+.container h1 {
+    font-size: 2.5rem; /* Large font size for the heading */
+    color: #ffffff; /* Dark color for better readability */
+    margin-bottom: 20px; /* Space below the heading */
+    font-weight: 600; /* Slightly bold heading */
+    text-align: center; /* Center align the heading */
+    font-family: 'Josefin Sans', sans-serif; /* Apply the Google Font */
+    margin-bottom: calc(var(--heading-height) * 0.5); /* 50% of the heading height */
+}
+
+/* Alert Success Message */
+.alert-success {
+    padding: 15px;
+    background-color: #d4edda; /* Light green background */
+    border: 1px solid #c3e6cb; /* Slightly darker green border */
+    color: #155724; /* Dark green text color */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the alert */
+    font-size: 1rem; /* Font size for the alert text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: center; /* Center align the alert text */
+}
+
+/* Close Button Styling */
+.alert-success .close {
+    color: #155724; /* Match the text color */
+    opacity: 0.7; /* Slightly transparent */
+}
+
+.alert-success .close:hover {
+    opacity: 1; /* Full opacity on hover */
+    cursor: pointer; /* Pointer cursor to indicate clickable */
+}
+
+h1 {
+    font-size: 2.5rem; /* Large font size for prominence */
+    color: #ffffff; /* Dark color for readability */
+    font-weight: 700; /* Bold weight for emphasis */
+    text-align: center; /* Center alignment */
+    margin-top: 0; /* Space above the heading */
+    margin-bottom: calc(var(--heading-height) * 10); /* 50% of the heading height */
+    padding: 10px; /* Padding for extra space around the text */
+    background: linear-gradient(to right, #4CAF50, #2E8B57); /* Gradient background */
+    color: #fff; /* White text color for contrast */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    text-shadow: 1px 1px 2px rgb(250, 248, 248); /* Light shadow for text */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect for Heading */
+h1:hover {
+    color: #d3de00; /* Change text color on hover */
+    background: linear-gradient(to right, #2E8B57, #4CAF50); /* Reverse gradient background on hover */
+    transform: scale(1.05); /* Slightly enlarge the heading */
+    cursor: pointer; /* Indicate clickable element */
+    margin-bottom: calc(var(--heading-height) * 0.5); /* 50% of the heading height */
+
+}
+
+/* Flexbox container for aligning items */
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+/* Style for the search bar */
+.search-bar {
+    flex-grow: 1;
+}
+
+/* Style for form control input */
+.form-control {
+    width: 200px; /* Adjust width as needed */
+    border-radius: 0.25rem; /* Rounded corners */
+    border: 1px solid #ced4da; /* Border color */
+    padding: 0.5rem 0.75rem; /* Padding inside input */
+    font-size: 0.875rem; /* Font size */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Add a shadow on focus */
+}
+
+/* Margin between elements */
+.me-2 {
+    margin-right: 0.5rem; /* Margin between label and select dropdown */
+}
+
+.ms-2 {
+    margin-left: 0.5rem; /* Margin between sorting indicator and select dropdown */
+}
+
+/* Style for buttons */
+.btn {
+    flex-shrink: 0;
+    border-radius: 0.25rem; /* Rounded corners */
+    padding: 0.5rem 1rem; /* Padding inside button */
+    font-size: 1rem; /* Font size for button text */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary button color */
+    border-color: #007bff; /* Border color */
+    color: #fff; /* Text color */
+    
+}
+
+.btn-primary:hover {
+    background-color: #1d8500; /* Darker color on hover */
+    border-color: #1d8500; /* Darker border color on hover */
+}
+
+/* Sort container style */
+.sort-container {
+    flex-shrink: 0;
+}
+
+/* Style for sorting indicator */
+.sorting-indicator {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 14px; /* Font size */
+    color: #6c757d; /* Gray color */
+    background-color: #f8f9fa; /* Light background color */
+    padding: 0.5rem; /* Padding inside the indicator */
+    border-radius: 0.25rem; /* Rounded corners */
+    border: 1px solid #dee2e6; /* Border for indicator */
+}
+.me-2.mb-0{
+    margin-left: 10%;
+    font-size: 13px;
+}
+/* Utility classes for hiding elements */
+.d-none {
+    display: none;
+}
+
+.d-md-block {
+    display: block;
+}
+
+/* Style for form group labels */
+.form-group label {
+    font-size: 0.875rem; /* Font size for label */
+    font-weight: bold; /* Bold font */
+    color: #495057; /* Darker color for better readability */
+    margin-bottom: 0.25rem; /* Margin below the label */
+}
+
+/* Additional styles for improved aesthetics */
+.container {
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container */
+    padding: 1rem; /* Add padding inside the container */
+}
+
+.card {
+    border: 1px solid #dee2e6; /* Card border */
+    border-radius: 0.25rem; /* Rounded corners */
+    box-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
+    background-color: #fff; /* Card background color */
+    padding: 1rem; /* Padding inside the card */
+}
+
+.card-header {
+    border-bottom: 1px solid #dee2e6; /* Border below header */
+    padding-bottom: 0.75rem; /* Padding below header */
+    font-size: 1.25rem; /* Font size for header */
+    font-weight: bold; /* Bold font */
+}
+
+.card-body {
+    padding: 1rem; /* Padding inside the card body */
+}
+
+.card-footer {
+    border-top: 1px solid #dee2e6; /* Border above footer */
+    padding-top: 0.75rem; /* Padding above footer */
+    font-size: 0.875rem; /* Font size for footer */
+    color: #6c757d; /* Gray color */
+}
+
+
+ /* Modal Header */
+.modal-header {
+    background: linear-gradient(to right, #4CAF50, #2E8B57); /* Gradient background */
+    color: white;
+}
+
+/* Close Button */
+.modal-header .close {
+    color: white;
+    opacity: 0.8;
+}
+
+/* Modal Title */
+.modal-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Modal Body Padding */
+.modal.fade {
+    margin-top: 5%;
+}
+
+/* Form Inputs */
+.form-control {
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+/* Image Preview */
+.form-group img {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    border-color: #28a745;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Add hover effects to buttons */
+.btn-success:hover, .btn-primary:hover {
+    background-color: #008223;
+    border-color: #008223;
+}
+
+/* Modal Content Padding and Size */
+.modal-content {
+    border-radius: 10px;
+    padding: 30px; /* Adjusted padding to make the form smaller */
+    width: 70%; /* Set a relative width for a smaller form */
+    max-width: 500px; /* Set a maximum width to control size */
+    margin: 0 auto; /* Center the modal content */
+}
+
+/* Form Group Margins */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Input Focus Styles */
+.form-control:focus {
+    box-shadow: 0px 0px 10px rgba(48, 179, 0, 0.5);
+    border-color: #00ad06;
+}
+/* Responsive Table Styling */
+
+

@@ -1,0 +1,200 @@
+/* Dynamic CSS for Image Analysis Page */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    margin-left: 16%;
+    padding: 10px;
+    background: linear-gradient(to right, #4CAF50, #2E8B57);
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgb(250, 248, 248);
+    transition: all 0.3s ease;
+    width: 75%;
+
+}
+
+h1:hover {
+    color: #d3de00;
+    background: linear-gradient(to right, #2E8B57, #4CAF50);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+
+#describeImageButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 16%;
+    margin-top: 2%;
+}
+
+#describeImageButton:hover {
+    background-color: #27ae60;
+}
+
+.image {
+    width: 150%;
+    max-width: 75%;
+   margin-left: 16%;
+   margin-top: 2%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 10px solid green;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-file-container {
+    display: flex;
+    justify-content: center;  /* Centers the image horizontally */
+    align-items: center;      /* Centers the image vertically */
+    flex-direction: column;   /* Stacks the elements vertically */
+    margin-top: 20px;
+}
+.file-input-container {
+    display: none;
+}
+
+#imagePreview {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    text-align: center;
+    margin: 20px auto; /* Centers the container itself */
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px solid #2E8B57;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+}
+
+#video {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 3px solid #4CAF50;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+#canvas {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+}
+
+button {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #1E6B42;
+}
+
+.warning-container {
+    width: 90%;
+    max-width: 75%;
+    margin: 20px auto;
+    background: #fef2d8;
+    border-left: 5px solid #f1c40f;
+    margin-left: 16%;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.warning-container h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #e67e22;
+}
+
+.warning-container p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.error {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fbe3e3;
+    border-left: 5px solid #e74c3c;
+    padding: 15px;
+    border-radius: 10px;
+    color: #c0392b;
+}
+
+.error ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.error li {
+    list-style-type: disc;
+}
+
+@media (max-width: 768px) {
+    
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    #imagePreview {
+        max-width: 100%;
+        height: inherit;
+
+    }
+    
+}

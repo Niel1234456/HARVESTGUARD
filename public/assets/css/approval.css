@@ -1,0 +1,318 @@
+/*Custom Styling for Pagination */
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: #fff;
+}
+
+.pagination .active .page-link {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.pagination .disabled .page-link {
+    background-color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+.pagination .disabled .page-link {
+    background-color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+
+
+.btn.btn-secondary, .btn.btn-info{
+    margin-bottom: 1%;
+}
+
+.btn.btn-secondary{
+gap: 100px;
+}
+.form-control.mr-2{
+    position: absolute;
+    right: 20%; 
+}
+.btn.btn-primary{
+    position: absolute;
+    right: 15%; 
+}
+.dropdown.mb-2{
+    position: absolute;
+    right: 5%; 
+}
+
+p{
+    font-size: 15px;
+}
+body {
+    background-color: #f0f4f8;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    transition: background-color 0.3s ease;
+    margin: 0;
+    
+}
+
+/* Heading Styles */
+br, h1 {
+    text-align: center;
+    margin-left: 13%;
+    margin-right: 5%;
+    color: #4a4a4a;
+    padding-bottom: 1%;
+    background: linear-gradient(to right, #4CAF50, #2E8B57);
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgb(250, 248, 248);
+    transition: all 0.3s ease;
+    font-size: 20px;
+
+}
+
+h1:hover {
+    color: #d3de00;
+    background: linear-gradient(to right, #2E8B57, #4CAF50);
+    transform: scale(1.05);
+    cursor: pointer;
+    margin-bottom: calc(var(--heading-height) * 0.5);
+}
+
+/* Alert Styles */
+.alert {
+    margin: 20px;
+}
+
+/* Table Styles */
+table {
+    margin-top: 1%;
+    width: 100%;
+    max-width: 1245px;
+    margin-left: 200px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+thead {
+    background: linear-gradient(to bottom, #00940c, #006400);
+    color: white;
+    align-items: center;
+}
+
+th, td {
+    padding: 1px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    font-weight: 700;
+}
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Button Styles */
+.btn {
+    margin: 5px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #856404;
+    color: white;
+}
+
+/* Margin Bottom Class */
+.mb-3 {
+    margin-left: 200px;
+}
+
+/* Responsive Design for Smaller Devices */
+
+/* For Tablets and Mobile Screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+
+    /* Adjust Heading */
+    h1 {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 18px;
+    }
+
+    /* Adjust Table Layout */
+    table {
+        margin-left: 0;
+        font-size: 0.9rem; /* Reduce font size for better fit */
+        max-width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    /* Adjust Button Sizes */
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .mb-3 {
+        margin-left: 0;
+    }
+}
+
+/* For Very Small Screens (max-width: 480px) */
+@media screen and (max-width: 480px) {
+
+    /* Adjust Heading */
+    h1 {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    /* Adjust Table Layout for Smallest Screens */
+    table {
+        font-size: 0.85rem; /* Smaller font size for small devices */
+        margin-left: 0;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    /* Adjust Button Sizes */
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    /* Margin adjustment */
+    .mb-3 {
+        margin-left: 100%;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block; /* Makes the table scrollable */
+        margin-left: 0;
+    }
+
+    th, td {
+        padding: 8px 12px; /* Reduced padding for better fit */
+        font-size: 0.9rem;  /* Reduced font size for smaller screens */
+    }
+
+    .mb-3 {
+        margin-left: 3%;
+    }
+    .form-control.mr-2{
+        position: relative;
+        margin-left: 21%;
+        width: 480px;
+        height: 30px;
+    }
+    .btn.btn-info, .btn.btn-secondary{
+        font-size: 12px;
+    }
+   
+    .btn.btn-primary{
+        position: absolute;
+        right: 3%; 
+        font-size: 12px;
+    }
+    .dropdown.mb-2{
+        right: 3%; 
+        top: 20%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    table {
+        font-size: 0.85rem;  /* Smaller font size for very small screens */
+    }
+
+    th, td {
+        padding: 6px 10px; /* Further reduced padding */
+    }
+
+    /* Adjust margins */
+    .mb-3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* For Mobile Portrait Mode (max-width: 375px) */
+@media screen and (max-width: 375px) {
+    table {
+        font-size: 0.8rem;  /* Even smaller font size for very small screens */
+    }
+
+    th, td {
+        padding: 5px 8px; /* Very minimal padding */
+    }
+
+    .mb-3 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

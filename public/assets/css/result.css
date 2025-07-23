@@ -1,0 +1,208 @@
+/* Container styling */
+
+body {
+    font-family: 'Josefin Sans', sans-serif; /* Apply the Google Font */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(to right, #ffffff, #eefff5, #b4ffd2);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2, p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #008a39;
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h2 {
+    color: #333;
+    font-size: 2.1rem;
+}
+
+p {
+    font-size: 1.3rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Button styling */
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+    margin: 10px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Specific button styling */
+#solutionBtn {
+    background-color: #008a39;
+    color: white;
+    height: fit-content;
+   margin-left: 300px;
+}
+
+#solutionBtn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+#pdfBtn {
+    background-color: #cc2e2e;
+    color: white;
+    margin-top: 10px;
+}
+
+#pdfBtn:hover {
+    background-color: #ae2727;
+    transform: translateY(-2px);
+}
+
+/* Button container styling */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 20px; /* Add spacing between the buttons */
+    margin-top: 30px; /* Adjust as needed */
+}
+
+/* Ensure buttons are the same width */
+#solutionBtn, #pdfBtn {
+    flex: 1; /* Ensures both buttons take up equal width */
+    max-width: 200px; /* Control the maximum width of the buttons */
+    text-align: center; /* Ensures the text is centered */
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff, #e3fced, #a0fec7);
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 50%;
+    max-width: 600px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #008e15;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.close:hover, .close:focus {
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+/* Link styling */
+a.analyze-link {
+    display: block;
+    margin: 30px auto;
+    color: #008a39;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+a.analyze-link:hover {
+    color: #00ff6a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    #solutionBtn, #pdfBtn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+@media (min-width: 320px) and (max-width: 425px) {
+
+    .container {
+        max-width: 600px;
+
+    }  
+
+    #solutionBtn {
+margin-left: -5%;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 576px) {
+
+
+
+    #solutionBtn {
+margin-left: -5%;
+    }
+}

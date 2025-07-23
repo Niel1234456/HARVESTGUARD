@@ -1,0 +1,74 @@
+
+.login-form {
+    margin-top: 5%;
+    margin-bottom: 3%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+    max-width: 800px; /* Increase the width */
+    width: 100%;
+
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Flex container for the fields */
+.field-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 170px);
+
+}
+
+/* Each input field */
+.field {
+    width: 100%; /* Default for small screens */
+    display: flex;
+    flex-direction: column;
+}
+
+.field input, .field select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Error message */
+.x-input-error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Button and form adjustments */
+.x-primary-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.x-primary-button:hover {
+    background-color: #45a049;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+

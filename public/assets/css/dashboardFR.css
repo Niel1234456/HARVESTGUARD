@@ -1,0 +1,609 @@
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+/* Header Row */
+.table-header {
+    display: flex;
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Table Rows */
+.table-row {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row:hover {
+    background-color: #e9f7e7;
+}
+
+/* Table Cells */
+.table-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Status Styling */
+.status {
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status.approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status.declined {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    margin-right: 13.3rem;
+ 
+   
+
+}
+
+.left-section {
+    flex: 0 0 68%;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header-news {
+    color: #faf8f8; /* White text color */
+    border-radius: 5px 5px 0 0;
+    font-size: 17px;
+    font-weight: 700;
+    background-color: #28a745;
+    margin-top: 15px;
+    padding: 5px;
+
+}
+.card-header-news:hover {
+    background-color: #218838; /* Darker green on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+.row-news {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    padding: 10px 0; /* Add vertical padding to the row */
+    gap: 0px; /* Adjust space between items */
+    margin-right: 7px;
+    
+   
+}
+
+.news-item {
+    position: relative; /* Set the position of the container relative to its normal position */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+
+}
+
+.news-item:hover {
+    transform: scale(1.05); /* Slightly enlarge the item */
+}
+
+.news-item img {
+    width: 95%; /* Adjust image width as needed */
+    max-width: 115%; /* Ensure image doesn't exceed the width of the item */
+    height: 210px; /* Maintain aspect ratio; adjust as needed */
+    margin-bottom: 10px; /* Space between image and text below */
+    border-radius: 5px; /* Rounded corners for image */
+    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+    border: 3px solid #d0ffd0; /* Blue border for the first card (Humidity) */
+    margin-left: 10px;
+}
+
+.news-item:hover img {
+    opacity: 0.8; /* Slightly fade the image on hover */
+}
+
+.news-item:hover .overlay {
+    opacity: 1; /* Show the overlay on hover */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff; /* Text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition for overlay */
+}
+
+.news-item h5 {
+    font-size: 15px; /* Adjust the font size as needed */
+    margin: 0; /* Remove default margin */
+    padding: 5px; /* Add padding to ensure text does not touch edges */
+    position: absolute; /* Position title absolutely within the container */
+    bottom: 12px; /* Align title to the bottom of the container */
+    left: 12px; /* Align title to the left edge of the container */
+    right: 0; /* Make title span the full width of the container */
+    color: #ffffff; /* Text color for contrast */
+    text-align: center; /* Center align text */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* Add more pronounced shadow */
+    
+}
+
+/* Increase the width of the container */
+.col-md-8 {
+    max-width: 900px; /* Adjust as needed for wider container */
+    flex: 0 0 100%; /* Ensure the column takes up the full width */
+    margin-top: 10px;
+    
+}
+
+/* Optional: Adjust the container for better centering */
+.card-news {
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto; /* Center the card horizontally */
+    margin-bottom: 15px;
+    border-radius: 10px;
+    margin-top: -15px;
+    width: 1000px;
+    max-width: 1000%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+
+/* Recent Events Styling */
+.card-events {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    margin-bottom: 20px; /* Space below the card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: -15px;
+}
+
+.card-header-events {
+    font-size: 20px; /* Larger font for header */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 10px; /* Space below header */
+}
+
+.card-body-events {
+
+    display: flex; /* Flexbox for layout */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    gap: 15px; /* Space between event items */
+    padding-bottom: 10px; /* Space at the bottom for better appearance */
+}
+
+.event-item {
+    background-color: #ffffff; /* White background for events */
+    padding: 10px; /* Padding inside each event */
+    border-radius: 6px; /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for event items */
+    min-width: 200px; /* Minimum width for event items */
+    flex: 0 0 auto; /* Prevent flex items from shrinking */
+    max-width: 250px; /* Optional: Set a maximum width */
+}
+
+.event-item h5 {
+    font-size: 16px; /* Font size for event title */
+    margin-bottom: 5px; /* Space below title */
+    color: #00721b;
+   
+}
+
+.event-item p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Font size for event details */
+    text-align: center;
+}
+
+
+
+
+
+
+
+.right-section {
+    flex: 0 0% 30%;
+    max-width: 30%;
+    margin-left: 20px;
+}
+/* Weather Forecast styling */
+.weather-forecast {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 500px;
+}
+
+.weather-forecast h5 {
+    font-size: 1.5em;
+    color: #002f62;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.weather-custom-container {
+    margin-bottom: 20px;
+}
+
+.weather-selector select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.custom-location {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.custom-location input {
+    flex: 1;
+}
+
+.weather-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    
+}
+/*ITO TAYO  MAG START SA WEATHER DESIGN*/
+.weather-detail-card p {
+    margin: 0;
+}
+
+.weather-detail-card i {
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+.weather-temp-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weather-temp-wrapper p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.weather-temp-wrapper img {
+    width: 50px;
+    height: 50px;
+}
+
+#add-custom-location {
+    background-color: #4998ec;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    
+}
+
+#add-custom-location:hover {
+    background-color: #0056b3;
+}
+
+.weather-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+}
+
+.weather-detail-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    width: 35%;
+    text-align: center;
+    margin-bottom: 15px;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+
+.weather-detail-card i {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.weather-detail-card p {
+    margin: 0;
+}
+
+.weather-detail-card:nth-child(1) {
+    border: 2px solid #3498db; /* Blue border for the first card (Humidity) */
+}
+
+.weather-detail-card:nth-child(2) {
+    border: 2px solid #2ecc71; /* Green border for the second card (Wind Speed) */
+}
+
+.weather-detail-card:nth-child(3) {
+    border: 2px solid #e74c3c; /* Red border for the third card (Pressure) */
+}
+
+.weather-detail-card:nth-child(4) {
+    border: 2px solid #f1c40f; /* Yellow border for the fourth card (Visibility) */
+}
+
+.weather-detail-card:nth-child(5) {
+    border: 2px solid #e67e22; /* Orange border for the fifth card (Sunrise) */
+}
+
+.weather-detail-card:nth-child(6) {
+    border: 2px solid #9b59b6; /* Purple border for the sixth card (Sunset) */
+}
+
+.weather-detail-card .fa-tint {
+    color: #1E90FF; /* Blue for humidity */
+
+}
+.weather-detail-card .fa-wind {
+    color: #20B2AA; /* Light sea green for wind speed */
+}
+
+.weather-detail-card .fa-tachometer-alt {
+    color: #FF6347; /* Tomato red for pressure */
+}
+
+.weather-detail-card .fa-eye {
+    color: #FFD700; /* Gold for visibility */
+}
+
+.weather-detail-card .fa-sun {
+    color: #FFA500; /* Orange for sunrise */
+}
+
+.weather-detail-card .fa-moon {
+    color: #4B0082; /* Indigo for sunset */
+}
+
+#weather-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #e9ecef;
+}
+
+.hourly-forecast {
+    margin-top: 2px;
+    
+    
+}
+
+h5 {
+    margin-bottom: 5px;
+    color: #002f62;;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+
+}
+
+.hourly-card {
+    display: inline-block;
+    width: 17%;
+    background-color: #f8f9fa; /* Default background color */
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #000000; /* Default text color */
+    font-size: 10px;
+    margin-left: 12px;
+    
+}
+
+.hourly-card.sunny-card {
+    background-color: #f9d56e; /* Light yellow for sunny */
+}
+
+.hourly-card.cloudy-card {
+    background-color: #d3d3d3; /* Light gray for cloudy */
+}
+
+.hourly-card.rainy-card {
+    background-color: #c3d7f6; /* Light blue for rainy */
+}
+
+
+.hourly-card.foggy-card {
+    background-color: #b0bec5; /* Light blue-gray for foggy */
+}
+
+.hourly-card.default-card {
+    background-color: #f8f9fa; /* Default background for other weather types */
+}
+
+
+.hourly-card img {
+    margin-top: 10px;
+}
+
+.clear-sky {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/sky-6917375_1280.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+.rainy {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/pexels-hikaique-125510.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+
+
+
+.cloudy {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/sky-1107579_1280.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+
+.stormy {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/sea-6291665_1280.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+.foggy {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/forest-7023487_1280.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+
+
+.windy {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/silver-grass-7545785_1280.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+.sunny {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5), /* Black color with 50% opacity */
+        rgba(0, 0, 0, 0.5) /* Black color with 50% opacity */
+    ), url('/assets/img/sun-3588618_1280.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    background-color: #b0c4de; /* LightSteelBlue color, used as a fallback */
+    color: white;
+    text-align-last: left;
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: space-between; /* Adjust spacing between items */
+    margin: 10px 0; /* Add some margin if needed */
+    font-size: 15px;
+    gap: 1%;
+}
+
+#weather-container h2 {
+    font-family: 'Josefin Sans', sans-serif; /* Apply the Google Font */
+    font-size: 30px; /* Change the font size */
+    font-weight: bold; /* Change the font weight */
+    color: #fffefe; /* Change the text color */
+}
