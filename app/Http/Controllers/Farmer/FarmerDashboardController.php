@@ -75,7 +75,6 @@ $borrowRequests = BorrowRequest::where('farmer_id', $farmer->id)
         ->take(20)
         ->get();
     
-        // Paginate supplies
         $supplies = Supply::paginate(7); 
     
         return view('farmer.supplies', compact('notifications', 'supplies'));
@@ -107,7 +106,6 @@ $borrowRequests = BorrowRequest::where('farmer_id', $farmer->id)
             return redirect()->back()->with('error', 'Not enough supply available.');
         }
     
-        // Create the supply request
         $supplyRequest = SupplyRequest::create([
             'supply_id' => $request->input('supply_id'),
             'quantity' => $request->input('quantity'),
@@ -118,18 +116,16 @@ $borrowRequests = BorrowRequest::where('farmer_id', $farmer->id)
             'requesting_number' => uniqid('REQ-'), // Add unique requesting number
         ]);
     
-        // Update supply quantity
         $supply->quantity -= $request->input('quantity');
         $supply->save();
     
-        // Create a notification
         Notification::create([
-            'farmer_id' => Auth::id(), // Associate the notification with the farmer
+            'farmer_id' => Auth::id(), 
             'title' => 'New Supply Request',
             'message' => 'Ang Request ID no. ' . $supplyRequest->requesting_number . ' ni Farmer ' . Auth::user()->name . 
             ' ay ' . $request->input('quantity') . ' units na ' . $supply->name . '.',
             'is_read' => false,
-            'type' => 'supply',  // Mark the notification type as supply
+            'type' => 'supply', 
 
         ]); 
     
@@ -146,7 +142,7 @@ $borrowRequests = BorrowRequest::where('farmer_id', $farmer->id)
         ->take(20)
         ->get();  
         
-        $equipment = Equipment::paginate(6); // Adjust the number of items per page as needed
+        $equipment = Equipment::paginate(6);
         return view('farmer.equipment', compact('notifications', 'equipment'));
     }
 
@@ -184,21 +180,20 @@ $borrowRequests = BorrowRequest::where('farmer_id', $farmer->id)
         'description' => $request->description,
         'return_date' => $request->return_date,
         'status' => 'pending', 
-        'borrow_number' => uniqid('BR-'), // Add unique requesting number
+        'borrow_number' => uniqid('BR-'), 
 
     ]);
 
         $equipment->quantity -= $request->quantity;
         $equipment->save();
 
-            // Create a notification
         Notification::create([
-            'farmer_id' => Auth::id(), // Associate the notification with the farmer
+            'farmer_id' => Auth::id(), 
             'title' => 'New Borrow Request',
             'message' => 'Ang Borrow ID no. ' . $borrowRequest->borrow_number . ' ni Farmer ' . Auth::user()->name . 
                 ' ay ' . $request->quantity . ' units na ' . $equipment->name . '.',
             'is_read' => false,
-            'type' => 'borrow',  // Mark the notification type as borrow
+            'type' => 'borrow', 
 
         ]);
 

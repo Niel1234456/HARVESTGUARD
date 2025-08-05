@@ -12,9 +12,7 @@ use App\Models\Notification;
 
 class ProfilesController extends Controller
 {
-    /**
-     * Show the profile page.
-     */
+
     public function show()
     {
         $farmer = Auth::guard('farmer')->user();
@@ -27,9 +25,6 @@ class ProfilesController extends Controller
         return view('farmer.auth.profile', compact('farmer', 'notifications'));
     }
 
-    /**
-     * Show the form to edit the profile.
-     */
     public function edit()
     {
         $farmer = Auth::guard('farmer')->user();
@@ -42,9 +37,6 @@ class ProfilesController extends Controller
         return view('farmer.auth.edit-profile', compact('farmer', 'notifications'));
     }
 
-    /**
-     * Update the farmer's profile.
-     */
     public function update(Request $request)
     {
         $farmer = Auth::guard('farmer')->user();
@@ -68,7 +60,6 @@ class ProfilesController extends Controller
             'password' => 'nullable|confirmed|min:8',
         ]);
 
-        // Update farmer's data
         $farmer->first_name = $request->first_name;
         $farmer-> last_name = $request->last_name;
         $farmer-> middle_initial = $request->middle_initial;
@@ -84,12 +75,10 @@ class ProfilesController extends Controller
         $farmer->id_type = $request->id_type;
         $farmer->id_number = $request->id_number;
 
-        // Handle profile picture upload if provided
         if ($request->hasFile('profile_picture')) {
             $profilePicturePath = time() . '.' . $request->file('profile_picture')->extension();
             $request->file('profile_picture')->move(public_path('images/profile_pictures'), $profilePicturePath);
 
-            // Delete old profile picture if it exists
             if ($farmer->profile_picture && file_exists(public_path('images/profile_pictures/' . $farmer->profile_picture))) {
                 unlink(public_path('images/profile_pictures/' . $farmer->profile_picture));
             }
@@ -97,7 +86,6 @@ class ProfilesController extends Controller
             $farmer->profile_picture = $profilePicturePath;
         }
 
-        // Handle password update if provided
         if ($request->filled('password')) {
             $farmer->password = Hash::make($request->password);
         }

@@ -22,7 +22,6 @@ class InsightController extends Controller
     {
         $data = $this->fetchInsightData();
         
-        // Fetch notifications before returning the view
         $notifications = Notification::orderBy('created_at', 'desc')
             ->take(20)
             ->get();
@@ -89,7 +88,6 @@ class InsightController extends Controller
         $borrowerCounts = $farmerActivity->pluck('borrow_requests_count');
         $supplyerCounts = $farmerActivity->pluck('supply_requests_count');
         
-      
         $mostRequestedSupply = SupplyRequest::selectRaw('supply_id, COUNT(*) as count')
             ->groupBy('supply_id')
             ->orderByRaw('COUNT(*) DESC')
@@ -166,7 +164,6 @@ class InsightController extends Controller
             'borrowRequests' => $combinedLabels->map(fn($label) => $combinedBorrowData[$label] ?? 0),
         ];
 
-        // Data to return
         return [
             'supplyRequests' => $supplyRequests,
             'borrowRequests' => $borrowRequests,
@@ -219,7 +216,6 @@ class InsightController extends Controller
         Notification::create([
             'message' => 'A new insight report "' . $fileName . '" has been created.',
         ]);
-    // Notify for report creation
     Notification::create([
         'message' => 'A new insight report "' . $fileName . '" has been created.',
     ]);

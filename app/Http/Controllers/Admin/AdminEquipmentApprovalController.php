@@ -17,8 +17,7 @@ class AdminEquipmentApprovalController extends Controller
         
         $query->where('is_returned', 'No')
               ->where('status', '!=', 'rejected');  
-        
-        // Search functionality
+
         if ($request->has('search')) {
             $search = $request->get('search');
             $query->where('borrow_number', 'LIKE', "%$search%")
@@ -34,16 +33,13 @@ class AdminEquipmentApprovalController extends Controller
                     $q->where('name', 'LIKE', "%$search%");
                 });
         }
-        
-        // Sorting functionality
+
         if ($request->has('sort') && $request->has('order')) {
             $query->orderBy($request->get('sort'), $request->get('order'));
         }
-        
-        // Pagination
+
         $borrowRequests = $query->paginate(10);
         
-        // Notifications
         $notifications = Notification::orderBy('created_at', 'desc')->take(20)->get();
         
         return view('admin.equipment-approval.index', compact('borrowRequests', 'notifications', 'request'));
@@ -81,10 +77,8 @@ class AdminEquipmentApprovalController extends Controller
     
     public function markAsReleased($id)
     {
-        // Find the borrow request by its ID
         $borrowRequest = BorrowRequest::findOrFail($id);
     
-        // Mark the borrow request as released (change from "No" to "Yes")
         $borrowRequest->is_released = 'Yes';
         $borrowRequest->save();
     
@@ -125,8 +119,7 @@ class AdminEquipmentApprovalController extends Controller
                 $q->where('is_returned', 'Yes')
                   ->orWhere('status', 'rejected'); 
             });
-    
-        // Search functionality
+
         if ($request->has('search')) {
             $search = $request->get('search');
             $query->where(function ($q) use ($search) {
@@ -144,16 +137,13 @@ class AdminEquipmentApprovalController extends Controller
                     });
             });
         }
-    
-        // Sorting functionality
+
         if ($request->has('sort') && $request->has('order')) {
             $query->orderBy($request->get('sort'), $request->get('order'));
         }
     
-        // Pagination
         $returnedBorrowRequests = $query->paginate(10);
     
-        // Notifications
         $notifications = Notification::orderBy('created_at', 'desc')->take(20)->get();
     
         return view('admin.history-records-borrowed', compact('returnedBorrowRequests', 'notifications', 'request'));

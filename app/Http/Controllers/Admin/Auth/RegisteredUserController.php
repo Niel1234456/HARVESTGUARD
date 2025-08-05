@@ -16,9 +16,7 @@ use App\Mail\VerifyEmail;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
+
     public function create(): View
     {
         return view('admin.auth.register');
@@ -31,10 +29,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // Debugging: Log request data
         \Log::info($request->all());
 
-        // Validate the request
         $request->validate([
             'email' => ['required', 'string', 'email', 'lowercase', 'max:255', 'unique:admins'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -57,7 +53,6 @@ class RegisteredUserController extends Controller
             'region' => ['required', 'string', 'max:100'],
         ]);
 
-        // Handle the profile picture upload
         $profilePicturePath = 'default-profile.png';
         if ($request->hasFile('profile_picture')) {
             $file = $request->file('profile_picture');
@@ -65,7 +60,7 @@ class RegisteredUserController extends Controller
             $file->move(public_path('images/profile_pictures'), $profilePicturePath);
         }
 
-        // Handle the office picture upload
+
         $officePicturePath = 'default-office.png';
         if ($request->hasFile('office_picture')) {
             $file = $request->file('office_picture');
@@ -73,7 +68,6 @@ class RegisteredUserController extends Controller
             $file->move(public_path('images/office_pictures'), $officePicturePath);
         }
 
-        // Create the admin record
         $admin = Admin::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -96,14 +90,12 @@ class RegisteredUserController extends Controller
             'region' => $request->region,
         ]);
 
-        // Ensure email verification works
         if (method_exists($admin, 'sendEmailVerificationNotification')) {
             $admin->sendEmailVerificationNotification();
         }
 
         event(new Registered($admin));
 
-        // Automatically log in the user
         Auth::login($admin);
 
         return redirect()->route('admin.verification.notice');

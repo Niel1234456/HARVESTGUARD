@@ -13,9 +13,6 @@ use App\Models\Notification;
 
 class AdminProfileController extends Controller
 {
-    /**
-     * Show the profile page.
-     */
     public function show()
     {
         
@@ -28,9 +25,6 @@ class AdminProfileController extends Controller
         return view('admin.profile.show', compact('admin', 'notifications'));
     }
 
-    /**
-     * Show the form to edit profile.
-     */
     public function edit()
 
     {
@@ -41,14 +35,10 @@ class AdminProfileController extends Controller
         return view('admin.profile.edit', compact('admin', 'notifications'));
     }
 
-    /**
-     * Update the admin profile.
-     */
     public function update(Request $request)
     {
         $admin = Auth::guard('admin')->user();
 
-        // Validate input
         $request->validate([
             'first_name' => ['required', 'string', 'max:100'],
             'last_name' => ['required', 'string', 'max:100'],
@@ -63,12 +53,10 @@ class AdminProfileController extends Controller
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:50048',  // Validate image
         ]);
 
-        // Handle the office picture upload
         if ($request->hasFile('office_picture')) {
             $officePicturePath = time() . '_office.' . $request->file('office_picture')->extension();
             $request->file('office_picture')->move(public_path('images/office_pictures'), $officePicturePath);
 
-            // Delete old office picture if it exists
             if ($admin->office_picture && file_exists(public_path('images/office_pictures/' . $admin->office_picture))) {
                 unlink(public_path('images/office_pictures/' . $admin->office_picture));
             }
@@ -76,12 +64,10 @@ class AdminProfileController extends Controller
             $admin->office_picture = $officePicturePath;
         }
 
-        // Handle the profile picture upload
         if ($request->hasFile('profile_picture')) {
             $profilePicturePath = time() . '.' . $request->file('profile_picture')->extension();
             $request->file('profile_picture')->move(public_path('images/profile_pictures'), $profilePicturePath);
 
-            // Delete old profile picture if it exists
             if ($admin->profile_picture && file_exists(public_path('images/profile_pictures/' . $admin->profile_picture))) {
                 unlink(public_path('images/profile_pictures/' . $admin->profile_picture));
             }
@@ -89,7 +75,6 @@ class AdminProfileController extends Controller
             $admin->profile_picture = $profilePicturePath;
         }
 
-        // Update the admin data
         $admin->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -101,7 +86,6 @@ class AdminProfileController extends Controller
             'birthday' => $request->birthday,
         ]);
 
-        // If password is provided, update the password
         if ($request->filled('password')) {
             $admin->update([
                 'password' => Hash::make($request->password),

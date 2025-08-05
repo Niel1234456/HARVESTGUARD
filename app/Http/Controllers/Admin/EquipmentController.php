@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Equipment;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB; // Add this at the top
+use Illuminate\Support\Facades\DB; 
 
 class EquipmentController extends Controller
 {
@@ -19,14 +19,12 @@ class EquipmentController extends Controller
 
         $query = Equipment::query();
 
-        // Search functionality
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('unit', 'LIKE', "%{$search}%");
         }
 
-        // Sort functionality
         if ($request->has('sort')) {
             $sort = $request->input('sort');
             switch ($sort) {
@@ -111,7 +109,6 @@ class EquipmentController extends Controller
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $imageName);
 
-            // Delete the old image
             if ($equipment->image) {
                 unlink(public_path('images') . '/' . $equipment->image);
             }
@@ -132,7 +129,6 @@ class EquipmentController extends Controller
     {
         $equipment = Equipment::findOrFail($id);
     
-        // Check if the equipment is involved in any transaction
         $isUsed = DB::table('borrow_requests')
             ->where('equipment_id', $equipment->id)
             ->whereIn('status', ['borrowed', 'pending'])
@@ -143,22 +139,20 @@ class EquipmentController extends Controller
             return redirect()->route('admin.equipment.index')->with('error', 'This equipment is currently in use and cannot be deleted.');
         }
     
-        // If forced deletion is requested, remove all related transactions & delete permanently
         if ($request->has('force')) {
             DB::table('borrow_requests')->where('equipment_id', $equipment->id)->delete(); // Remove related transactions
     
             if ($equipment->image) {
                 $imagePath = public_path('images') . '/' . $equipment->image;
                 if (file_exists($imagePath)) {
-                    unlink($imagePath); // Delete the image permanently
+                    unlink($imagePath);
                 }
             }
     
-            $equipment->delete(); // Hard delete from database
+            $equipment->delete(); 
             return redirect()->route('admin.equipment.index')->with('delete', 'Equipment and related transactions were permanently deleted.');
         }
-    
-        // Normal deletion (soft delete)
+
         session()->put('deleted_equipment', [
             'id' => $equipment->id,
             'name' => $equipment->name,
@@ -167,7 +161,6 @@ class EquipmentController extends Controller
             'image' => $equipment->image,
         ]);
     
-        // Move image to backup folder
         if ($equipment->image) {
             $imagePath = public_path('images') . '/' . $equipment->image;
             $backupImagePath = public_path('deleted_images') . '/' . $equipment->image;
@@ -179,8 +172,7 @@ class EquipmentController extends Controller
                 rename($imagePath, $backupImagePath);
             }
         }
-    
-        // Soft delete the equipment
+
         $equipment->delete();
     
         return redirect()->route('admin.equipment.index')
@@ -191,7 +183,7 @@ class EquipmentController extends Controller
     {
         $equipment = Equipment::findOrFail($id);
     
-        // Remove permanently
+
         if ($equipment->image) {
             $imagePath = public_path('images') . '/' . $equipment->image;
             if (file_exists($imagePath)) {
@@ -203,7 +195,7 @@ class EquipmentController extends Controller
     
         return redirect()->route('admin.equipment.index')->with([
             'delete' => 'Equipment was permanently deleted.',
-            'force_deleted' => true // Used to show only the success message, no undo
+            'force_deleted' => true 
         ]);
     }
     
@@ -215,8 +207,7 @@ class EquipmentController extends Controller
         if (!$deletedEquipment) {
             return redirect()->route('admin.equipment.index')->with('error', 'No equipment to restore.');
         }
-    
-        // Restore the image from backup if needed
+
         if (!empty($deletedEquipment['image'])) {
             $imagePath = public_path('images') . '/' . $deletedEquipment['image'];
             $backupImagePath = public_path('deleted_images') . '/' . $deletedEquipment['image'];
@@ -225,8 +216,7 @@ class EquipmentController extends Controller
                 copy($backupImagePath, $imagePath);
             }
         }
-    
-        // Restore the equipment
+
         Equipment::create([
             'id' => $deletedEquipment['id'],
             'name' => $deletedEquipment['name'],

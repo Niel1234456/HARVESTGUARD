@@ -13,17 +13,12 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
+
     public function create(): View
     {
         return view('admin.auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
     public function store(AdminLoginRequest $request): RedirectResponse
     {
         $key = $this->throttleKey($request);
@@ -43,7 +38,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('admin.dashboard', absolute: false));
         }
 
-        RateLimiter::hit($key, 180); // Lockout for 3 minutes (180 seconds) on each failed attempt.
+        RateLimiter::hit($key, 180);
 
         $remaining = 3 - RateLimiter::attempts($key);
 
@@ -52,9 +47,6 @@ class AuthenticatedSessionController extends Controller
         ]);
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('admin')->logout();
@@ -64,10 +56,6 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->route('admin.login');
     }
-
-    /**
-     * Generate the throttle key for the login attempt.
-     */
     protected function throttleKey(Request $request): string
     {
         return Str::lower($request->input('email')) . '|' . $request->ip();

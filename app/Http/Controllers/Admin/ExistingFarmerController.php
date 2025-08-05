@@ -19,7 +19,6 @@ class ExistingFarmerController extends Controller
 
         $query = ExistingFarmer::query();
 
-        // Search functionality
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where('firstname', 'LIKE', "%{$search}%")
@@ -28,7 +27,6 @@ class ExistingFarmerController extends Controller
                   ->orWhere('middle_initial', 'LIKE', "%{$search}%");
         }
 
-        // Sort functionality
         if ($request->has('sort')) {
             $sort = $request->input('sort');
             switch ($sort) {
@@ -57,13 +55,12 @@ class ExistingFarmerController extends Controller
                     $query->orderBy('email', 'desc');
                     break;
                 default:
-                    // Default sorting (optional)
                     $query->orderBy('firstname', 'asc');
                     break;
             }
         }
 
-        $existingFarmers = $query->paginate(10); // Adjust pagination as needed
+        $existingFarmers = $query->paginate(10);
 
         return view('admin.existingFarmers.index', compact('existingFarmers', 'notifications'));
     }
@@ -111,7 +108,6 @@ class ExistingFarmerController extends Controller
     {
         $existingFarmer = ExistingFarmer::findOrFail($id);
 
-        // Create the new Farmer record
         Farmer::create([
             'firstname' => $existingFarmer->firstname,
             'lastname' => $existingFarmer->lastname,
@@ -124,7 +120,6 @@ class ExistingFarmerController extends Controller
             'address_2' => $existingFarmer->address_2,
         ]);
 
-        // Optionally delete the existing farmer record
         $existingFarmer->delete();
 
         return redirect()->route('admin.existingFarmers.index')->with('success', 'Farmer transferred successfully.');

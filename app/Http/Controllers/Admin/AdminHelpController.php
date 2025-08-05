@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminHelpController extends Controller
 {
-    /**
-     * Display the Help Page.
-     */
+
     public function index()
     {
         $notifications = Notification::orderBy('created_at', 'desc', 'approval')

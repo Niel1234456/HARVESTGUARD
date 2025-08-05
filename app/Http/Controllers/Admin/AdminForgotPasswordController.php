@@ -68,7 +68,6 @@ class AdminForgotPasswordController extends Controller
             return back()->withErrors(['email' => 'No admin account found with this email.']);
         }
     
-        // **Check if the new password matches the current password**
         if (Hash::check($request->password, $admin->password)) {
             return back()->withErrors(['password' => 'New password cannot be the same as the current password.']);
         }

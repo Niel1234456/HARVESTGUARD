@@ -15,9 +15,6 @@ use Illuminate\View\View;
 class RegisteredUserController extends Controller
 {
     
-    /**
-     * Display the registration view.
-     */
     public function create(): View
     {
         return view('farmer.auth.register');
@@ -30,30 +27,30 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // Add captcha validation here
+        
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'middle_initial' => 'nullable|string|max:1', // Allow for middle initial            
+            'middle_initial' => 'nullable|string|max:1',           
             'birth_date' => 'required|date',
             'gender' => 'required|string',
             'street_address' => 'required|string|max:255',
             'street_address2' => 'nullable|string|max:255',
             'country' => 'required|string',
-            'province' => 'required|string', // Validate province
+            'province' => 'required|string', 
             'city' => 'required|string|max:255',
             'region' => 'required|string|max:255',
             'postal_code' => 'required|numeric',
             'farmers_activity' => 'nullable|string|max:255',
             'id_type' => 'nullable|string|max:255',
             'id_number' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:20', // Ensure phone is nullable
+            'phone' => 'nullable|string|max:20',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'profile_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:50048',
-            'crop_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:50048',  // Validation for the crop picture
+            'crop_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:50048',  
             'captcha' => 'required|captcha',  ], [
                 'captcha.required' => 'Please solve the CAPTCHA to proceed.',
-                'captcha.captcha' => 'The CAPTCHA is incorrect. Please try again.', // Captcha validation
+                'captcha.captcha' => 'The CAPTCHA is incorrect. Please try again.',
         ]);
 
         if ($request->hasFile('profile_picture')) {

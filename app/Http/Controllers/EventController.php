@@ -129,7 +129,7 @@ class EventController extends Controller
             'message' => 'News "' . $news->title . '" has been added.',
         ]);
 
-        return response()->json($news, 201); // Return with a proper status code
+        return response()->json($news, 201);
     }
 
     public function getNews()
@@ -152,8 +152,7 @@ class EventController extends Controller
     public function deleteNews($id)
     {
         $news = News::findOrFail($id);
-    
-        // Save news details before deleting
+
         session()->put('deleted_news', [
             'id' => $news->id,
             'title' => $news->title,
@@ -161,7 +160,6 @@ class EventController extends Controller
             'link' => $news->link,
         ]);
     
-        // Move the image to a backup folder instead of deleting permanently
         if ($news->image) {
             $imagePath = public_path('news_images') . '/' . $news->image;
             $backupImagePath = public_path('deleted_news_images') . '/' . $news->image;
@@ -179,7 +177,7 @@ class EventController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'News deleted successfully.',
-            'undo' => true // Indicate undo is available
+            'undo' => true
         ]);
     }
     public function restore()
@@ -187,7 +185,6 @@ class EventController extends Controller
     $deletedNews = session()->get('deleted_news');
 
     if ($deletedNews) {
-        // Restore the image from backup if it exists
         if ($deletedNews['image']) {
             $imagePath = public_path('news_images') . '/' . $deletedNews['image'];
             $backupImagePath = public_path('deleted_news_images') . '/' . $deletedNews['image'];

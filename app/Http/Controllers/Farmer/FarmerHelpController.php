@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FarmerHelpController extends Controller
 {
-    /**
-     * Display the Help Page.
-     */
+
     public function index()
     {
         $farmer = Auth::guard('farmer')->user();

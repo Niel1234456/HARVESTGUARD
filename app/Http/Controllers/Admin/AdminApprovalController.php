@@ -16,7 +16,6 @@ class AdminApprovalController extends Controller
             ->where('is_released', 'No') 
             ->where('status', '!=', 'rejected'); 
     
-        // Search functionality
         if ($request->has('search')) {
             $search = $request->get('search');
             $supplyRequests->where(function ($query) use ($search) {
@@ -33,18 +32,14 @@ class AdminApprovalController extends Controller
             });
         }
     
-        // Sorting functionality
         if ($request->has('sort') && $request->has('order')) {
             $supplyRequests->orderBy($request->get('sort'), $request->get('order'));
         }
     
-        // Pagination
         $supplyRequests = $supplyRequests->paginate(10);
     
-        // Fetch notifications
         $notifications = Notification::orderBy('created_at', 'desc')->take(20)->get();
     
-        // Return view with supply requests and notifications
         return view('admin.approval.index', compact('supplyRequests', 'notifications', 'request'));
     }
     
@@ -69,7 +64,7 @@ class AdminApprovalController extends Controller
     {
         $supplyRequest = SupplyRequest::findOrFail($id);
         $supplyRequest->status = 'rejected';
-        $supplyRequest->is_released = 'No'; // Ensure rejected requests are not marked as released
+        $supplyRequest->is_released = 'No'; 
         $supplyRequest->save();
     
         Notification::create([
@@ -98,14 +93,12 @@ class AdminApprovalController extends Controller
 
     public function historyRecords(Request $request)
     {
-        // Query to fetch supply requests with related models
         $releasedRequests = SupplyRequest::with('supply', 'farmer')
             ->where(function ($query) {
                 $query->whereIn('status', ['approved', 'rejected'])
-                      ->orWhere('is_released', 'Yes'); // Include only released requests
+                      ->orWhere('is_released', 'Yes'); 
             });
 
-        // Apply search functionality
         if ($request->has('search')) {
             $search = $request->get('search');
             $releasedRequests->where(function ($query) use ($search) {
@@ -123,15 +116,12 @@ class AdminApprovalController extends Controller
             });
         }
 
-        // Apply sorting
         if ($request->has('sort') && $request->has('order')) {
             $releasedRequests->orderBy($request->get('sort'), $request->get('order'));
         }
 
-        // Pagination
         $releasedRequests = $releasedRequests->paginate(10);
 
-        // Fetch notifications
         $notifications = Notification::orderBy('created_at', 'desc')->take(20)->get();
 
         return view('admin.history-records', compact('releasedRequests', 'notifications', 'request'));

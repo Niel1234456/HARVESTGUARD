@@ -132,7 +132,6 @@ public function index(Request $request)
     {
         $farmer = Farmer::findOrFail($id);
     
-        // Fetch reports related to this farmer
         $pdfFiles = Storage::files("reports/farmer_{$id}");
     
         $fileDetails = [];
@@ -166,7 +165,6 @@ public function index(Request $request)
                 ];
             }
         
-            // Search
             if ($request->has('search')) {
                 $search = $request->get('search');
                 $fileDetails = array_filter($fileDetails, function ($file) use ($search) {
@@ -174,7 +172,6 @@ public function index(Request $request)
                 });
             }
         
-            // Sorting
             if ($request->has('sort') && $request->has('order')) {
                 usort($fileDetails, function ($a, $b) use ($request) {
                     $sortBy = $request->get('sort');
@@ -187,8 +184,7 @@ public function index(Request $request)
                 });
             }
         
-            // Pagination logic
-            $perPage = 10; // Number of items per page
+            $perPage = 10; 
             $page = $request->get('page', 1);
             $total = count($fileDetails);
         

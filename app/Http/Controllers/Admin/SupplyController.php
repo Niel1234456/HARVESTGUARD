@@ -171,7 +171,6 @@ class SupplyController extends Controller
             }
         }
     
-        // Soft delete the supply
         $supply->delete();
     
         return redirect()->route('admin.supplies.index')
@@ -182,7 +181,6 @@ class SupplyController extends Controller
     {
         $supply = Supply::findOrFail($id);
     
-        // Remove permanently
         if ($supply->image) {
             $imagePath = public_path('images') . '/' . $supply->image;
             if (file_exists($imagePath)) {
@@ -194,7 +192,7 @@ class SupplyController extends Controller
     
         return redirect()->route('admin.supplies.index')->with([
             'delete' => 'Supply was permanently deleted.',
-            'force_deleted' => true // Used to show only the success message, no undo
+            'force_deleted' => true
         ]);
     }
     
@@ -207,7 +205,6 @@ public function restore()
         return redirect()->route('admin.supplies.index')->with('error', 'No supply to restore.');
     }
 
-    // Restore the image from backup if needed
     if ($deletedSupply['image']) {
         $imagePath = public_path('images') . '/' . $deletedSupply['image'];
         $backupImagePath = public_path('deleted_images') . '/' . $deletedSupply['image'];
@@ -217,7 +214,6 @@ public function restore()
         }
     }
 
-    // Restore the supply
     Supply::create([
         'id' => $deletedSupply['id'],
         'name' => $deletedSupply['name'],
@@ -226,7 +222,6 @@ public function restore()
         'image' => $deletedSupply['image'],
     ]);
 
-    // Clear session after restoring
     session()->forget('deleted_supply');
 
     return redirect()->route('admin.supplies.index')->with('success', 'Supply restored successfully.');

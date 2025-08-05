@@ -15,9 +15,9 @@ class VerificationController extends Controller
     {
         $user = Admin::findOrFail($id);
     
-        // Check if the hash matches
+       
         if (Hash::check($user->getEmailForVerification(), $hash)) {
-            $user->markEmailAsVerified(); // This will set the `email_verified_at` timestamp
+            $user->markEmailAsVerified();
     
             event(new Verified($user));
     
