@@ -8,9 +8,7 @@ use App\Http\Controllers\Controller;
 
 class NotificationControllerfarmer extends Controller
 {
-    /** 
-     * Get all notifications for the authenticated farmer.
-     */
+
     public function index()
     {
         $farmerId = auth()->id();
@@ -29,9 +27,6 @@ class NotificationControllerfarmer extends Controller
         ]);
     }
 
-    /**
-     * Fetch unread notification count (for real-time updates)
-     */
     public function getUnreadCount()
     {
         $unreadCount = Notification::where('farmer_id', auth()->id())
@@ -41,9 +36,6 @@ class NotificationControllerfarmer extends Controller
         return response()->json(['unread_count' => $unreadCount]);
     }
 
-    /**
-     * Mark notifications as read.
-     */
     public function markAsRead()
     {
         Notification::where('farmer_id', auth()->id())
@@ -55,9 +47,6 @@ class NotificationControllerfarmer extends Controller
         ]);
     }
 
-    /**
-     * Delete a specific notification.
-     */
     public function destroy($id)
     {
         $farmerId = auth()->id();
@@ -72,7 +61,6 @@ class NotificationControllerfarmer extends Controller
 
         $notification->delete();
 
-        // Get updated unread count after deletion
         $unreadCount = Notification::where('farmer_id', $farmerId)
             ->where('is_read', false)
             ->count();

@@ -36,7 +36,6 @@
     <div class="d-flex align-items-center">
     <form action="{{ route('admin.equipment.index') }}" method="GET" class="d-flex align-items-center">
 
-        <!-- Dropdown Button -->
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ request('sort') ? ucfirst(str_replace('_', ' ', request('sort'))) : 'Sort by' }}
@@ -102,7 +101,6 @@
     </button>
 </div>
 
-<!-- Delete Confirmation Modal -->
 <center><div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -204,8 +202,6 @@
     </div>
 </div>
 
-
-<!-- Pagination -->
 <div class="d-flex justify-content-center mt-4">
     <ul class="pagination">
         @if ($equipments->onFirstPage())
@@ -262,24 +258,21 @@
     });
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Select all quantity input fields
         document.querySelectorAll("input[name='quantity']").forEach(function (input) {
             input.addEventListener("input", function () {
                 if (this.value <= 0) {
                     alert("Quantity must be greater than zero.");
-                    this.value = ""; // Clear the input field
+                    this.value = ""; 
                 }
             });
         });
-
-        // Prevent form submission if invalid quantity
         document.querySelectorAll("form").forEach(function (form) {
             form.addEventListener("submit", function (event) {
                 let quantityInputs = form.querySelectorAll("input[name='quantity']");
                 for (let input of quantityInputs) {
                     if (input.value <= 0 || input.value === "") {
                         alert("Please enter a valid quantity greater than zero.");
-                        event.preventDefault(); // Prevent form submission
+                        event.preventDefault();
                         return;
                     }
                 }
@@ -291,7 +284,6 @@
         const columns = ['#', 'Name', 'Quantity', 'Unit', 'Image', 'Actions'];
         const columnLabelsRow = document.getElementById('columnLabels');
 
-        // Function to convert column index to Excel letter
         function getExcelColumnLetter(index) {
             let letter = '';
             let temp;

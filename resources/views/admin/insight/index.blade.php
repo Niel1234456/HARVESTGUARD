@@ -15,7 +15,6 @@
 @include('admin.header')
 @include('admin.navbar')
 <div class="summary-cards">
-            <!-- Available and Borrowed Equipment -->
             <div class="card high">
                 <h3>Available Equipment</h3>
                 <p><b>{{ $equipmentStats['total'] }} <i class="fas fa-arrow-up"></i></b></p>
@@ -24,7 +23,6 @@
                 <h3>Borrowed Equipment</h3>
                 <p><b>{{ $equipmentStats['borrowed'] }} <i class="fas fa-arrow-down"></i></b></p>
             </div>
-            <!-- Available and Requested Supply -->
             <div class="card high">
                 <h3>Available Supply</h3>
                 <p><b>{{ $supplyStats['total'] }} <i class="fas fa-arrow-up"></i></b></p>

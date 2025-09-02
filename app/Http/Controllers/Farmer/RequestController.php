@@ -15,26 +15,21 @@ class RequestController extends Controller
     {
         $farmer = Auth::guard('farmer')->user();
     
-        // Fetch notifications
         $notifications = Notification::where('farmer_id', $farmer->id)
             ->whereIn('type', ['supply', 'borrow', 'plantDiseasereport', 'approval', 'rejection', 'release', 'return'])
             ->orderBy('created_at', 'desc')
             ->take(20)
             ->get();
     
-        // Default sorting parameters
-        $sort = $request->get('sort', 'created_at'); // Default sort field
-        $order = $request->get('order', 'desc'); // Default sort order
+        $sort = $request->get('sort', 'created_at'); 
+        $order = $request->get('order', 'desc'); 
     
-        // Validate sort order
         if (!in_array($order, ['asc', 'desc'])) {
             $order = 'desc';
         }
     
-        // Search Input
         $search = $request->input('search');
     
-        // Fetch supply requests with search, sort, and pagination
         $supplyRequests = SupplyRequest::where('farmer_id', $farmer->id)
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
@@ -50,7 +45,6 @@ class RequestController extends Controller
             ->with('supply:id,name')
             ->paginate(5);
     
-        // Fetch borrow requests with search, sort, and pagination
         $borrowRequests = BorrowRequest::where('farmer_id', $farmer->id)
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
@@ -68,12 +62,9 @@ class RequestController extends Controller
             ->with('equipment:id,name')
             ->paginate(5);
     
-        // Calculate total quantities
         $totalSupplyRequests = SupplyRequest::where('farmer_id', $farmer->id)->sum('quantity');
         $totalBorrowRequests = BorrowRequest::where('farmer_id', $farmer->id)->sum('quantity');
-    
-        // Return the view with data
-        return view('farmer.request', compact(
+            return view('farmer.request', compact(
             'supplyRequests',
             'borrowRequests',
             'totalSupplyRequests',
@@ -87,11 +78,7 @@ class RequestController extends Controller
     public function deleteSupplyRequest($id)
     {
         $request = SupplyRequest::findOrFail($id);
-    
-        // Ensure session array is initialized
-        $deletedRequests = session()->get('deleted_supply_requests', []);
-    
-        // Store deleted request in session
+            $deletedRequests = session()->get('deleted_supply_requests', []);
         $deletedRequests[$id] = [
             'id' => $request->id,
             'farmer_id' => $request->farmer_id,
@@ -103,12 +90,10 @@ class RequestController extends Controller
     
         session()->put('deleted_supply_requests', $deletedRequests);
     
-        // Restore quantity
         if ($request->supply) {
             $request->supply->increment('quantity', $request->quantity);
         }
     
-        // Delete from database
         $request->delete();
     
         return redirect()->back()->with('success', 'Ang pag-delete ng Requested Supplies ay Matagumpay.');
@@ -123,16 +108,13 @@ class RequestController extends Controller
             return redirect()->back()->with('error', 'Walang nahanap na request upang ibalik.');
         }
     
-        // Restore the deleted request
         $restoredRequest = new SupplyRequest($deletedRequests[$id]);
         $restoredRequest->save();
     
-        // Deduct the restored quantity from supply
         if ($restoredRequest->supply) {
             $restoredRequest->supply->decrement('quantity', $restoredRequest->quantity);
         }
     
-        // Remove from session
         unset($deletedRequests[$id]);
         session()->put('deleted_supply_requests', $deletedRequests);
     
@@ -147,7 +129,6 @@ class RequestController extends Controller
             return redirect()->back()->with('error', 'Walang nahanap na request upang tanggalin.');
         }
     
-        // Remove from session permanently
         unset($deletedRequests[$id]);
         session()->put('deleted_supply_requests', $deletedRequests);
     

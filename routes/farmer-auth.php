@@ -11,7 +11,6 @@ use App\Http\Controllers\Farmer\Auth\ProfilesController;
 use App\Http\Controllers\Farmer\ImageRecognitionController;
 use App\Http\Controllers\Farmer\ImageAnalysisController;
 use App\Http\Controllers\Farmer\RequestController;
-// use App\Http\Controllers\Farmer\Auth\CaptchaController;
 use App\Http\Controllers\Farmer\FarmerAuthController;
 use App\Http\Controllers\Farmer\NotificationControllerfarmer;
 use App\Http\Controllers\Farmer\FarmerHelpController;
@@ -34,14 +33,12 @@ Route::middleware('guest:farmer')->prefix('farmer')->name('farmer.')->group(func
 Route::middleware('auth:farmer')->prefix('farmer')->name('farmer.')->group(function () {
     Route::get('/dashboard', [FarmerDashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/supplies', [FarmerDashboardController::class, 'supplies'])->name('supplies');
-    Route::get('/dashboard/send-request', [FarmerDashboardController::class, 'showRequestForm'])->name('show-request-form'); // Corrected route name
-    Route::post('/dashboard/send-request', [FarmerDashboardController::class, 'sendRequest'])->name('send-request'); // Corrected route name
+    Route::get('/dashboard/send-request', [FarmerDashboardController::class, 'showRequestForm'])->name('show-request-form'); 
+    Route::post('/dashboard/send-request', [FarmerDashboardController::class, 'sendRequest'])->name('send-request'); 
     Route::get('/equipment', [FarmerDashboardController::class, 'equipment'])->name('equipment');
     Route::get('/borrow', [FarmerDashboardController::class, 'showBorrowForm'])->name('borrow.form');
     Route::post('/borrow', [FarmerDashboardController::class, 'store'])->name('borrow.store');
     Route::get('/update', [PdfController::class, 'showUploadForm'])->name('farmer.update');
-   // Route::post('/update', [PdfController::class, 'showUploadForm'])->name('farmer.update');
-    //Route::get('/PdfConvert', [PdfController::class, 'convertToPdf'])->name('farmer.PdfConvert');
 
     Route::post('/generate-pdf-report', [PDFController::class, 'generateReport'])->name('generate.pdf.report');
 

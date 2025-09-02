@@ -9,7 +9,7 @@ class AddDescriptionReturnDateBorrowNumberToBorrowRequestsTable extends Migratio
     public function up()
     {
         Schema::table('borrow_requests', function (Blueprint $table) {
-            $table->string('borrow_number')->nullable(); // Add nullable for now, no unique constraint yet
+            $table->string('borrow_number')->nullable(); 
             $table->string('description')->nullable();
             $table->date('return_date')->nullable();
         });

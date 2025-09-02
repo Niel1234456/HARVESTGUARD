@@ -66,7 +66,6 @@
                     <th>Address 2</th>
                     <th>Actions</th>
                     <tr id="columnLabels">
-                    <!-- Column labels will be inserted here by JavaScript -->
                 </tr>
                 </tr>
             </thead>
@@ -93,8 +92,6 @@
                         </td>
                         
                     </tr>
-
-                    <!-- Edit Farmer Modal -->
                     <div class="modal fade" id="editFarmerModal-{{ $farmer->id }}" tabindex="-1" role="dialog" aria-labelledby="editFarmerModalLabel-{{ $farmer->id }}" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -156,9 +153,6 @@
                 @endforeach
             </tbody>
         </table>
-        <!-- Add New Farmer Modal Button -->
-
-        <!-- Add New Farmer Modal -->
         <div class="modal fade" id="addFarmerModal" tabindex="-1" role="dialog" aria-labelledby="addFarmerModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -221,10 +215,8 @@
 @else
     <p>No Historical Farmer Data.</p>
 @endif
-    <!-- Pagination Links -->
     <div class="d-flex justify-content-center">
         <ul class="pagination">
-            <!-- Previous Page Link -->
             @if ($existingFarmers->onFirstPage())
                 <li class="page-item disabled">
                     <span class="page-link">Previous</span>
@@ -235,14 +227,11 @@
                 </li>
             @endif
 
-            <!-- Page Number Links -->
             @for ($i = 1; $i <= $existingFarmers->lastPage(); $i++)
                 <li class="page-item {{ $existingFarmers->currentPage() == $i ? 'active' : '' }}">
                     <a href="{{ $existingFarmers->url($i) }}" class="page-link">{{ $i }}</a>
                 </li>
             @endfor
-
-            <!-- Next Page Link -->
             @if ($existingFarmers->hasMorePages())
                 <li class="page-item">
                     <a href="{{ $existingFarmers->nextPageUrl() }}" class="page-link">Next</a>
@@ -262,7 +251,7 @@
     <script>
              $(document).ready(function(){
         $('#hamburger-icon').on('click', function(){
-            $('#sidebar').toggleClass('active'); // Toggle sidebar visibility
+            $('#sidebar').toggleClass('active'); 
         });
     });
         
@@ -305,7 +294,6 @@
             const columns = ['#', 'Name', 'Quantity', 'Unit', 'Image', 'Actions', 'Email', '1,', '2', '3', '4'];
             const columnLabelsRow = document.getElementById('columnLabels');
 
-            // Function to convert column index to Excel letter
             function getExcelColumnLetter(index) {
                 let letter = '';
                 let temp;
@@ -317,7 +305,6 @@
                 return letter;
             }
 
-            // Create column letter headers
             columns.forEach((col, index) => {
                 const th = document.createElement('th');
                 th.textContent = getExcelColumnLetter(index);

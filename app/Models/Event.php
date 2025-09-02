@@ -26,7 +26,6 @@ class Event extends Model
         'end' => 'datetime',
     ];
 
-    // Format start_time and end_time before returning
     public function getStartTimeAttribute($value)
     {
         return Carbon::parse($value)->format('H:i:s');

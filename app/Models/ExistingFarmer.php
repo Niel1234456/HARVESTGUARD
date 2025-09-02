@@ -1,6 +1,5 @@
 <?php
 
-// app/Models/ExistingFarmer.php
 
 namespace App\Models;
 

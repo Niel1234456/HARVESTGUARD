@@ -27,7 +27,6 @@ class FarmerDashboardController extends Controller
         ->take(20)
         ->get();
 
-        // Get recent news and events
         $recentNews = News::orderBy('created_at', 'desc')
             ->take(3)
             ->get(['title', 'image']);

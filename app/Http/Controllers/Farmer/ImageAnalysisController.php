@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Farmer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ImageAnalysis; // Import the ImageAnalysis model
-use Illuminate\Support\Facades\Http; // To make HTTP requests
+use App\Models\ImageAnalysis; 
+use Illuminate\Support\Facades\Http; 
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
-use App\Models\Notification; // Import the ImageAnalysis model
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 class ImageAnalysisController extends Controller
@@ -32,7 +32,6 @@ class ImageAnalysisController extends Controller
         ->orderBy('created_at', 'desc')
         ->take(20)
         ->get();
-        // Validate the request based on the presence of an image file or base64 data
         $request->validate([
             'image' => 'nullable|image|max:20048',
             'capturedImage' => 'nullable|string'
@@ -41,11 +40,9 @@ class ImageAnalysisController extends Controller
         $imagePath = null;
 
         if ($request->hasFile('image')) {
-            // Handle uploaded image
             $image = $request->file('image');
             $imagePath = $image->getPathname();
         } elseif ($request->filled('capturedImage')) {
-            // Handle captured image (base64)
             $capturedImage = $request->input('capturedImage');
             $imagePath = $this->handleBase64Image($capturedImage);
         } else {
@@ -273,7 +270,6 @@ class ImageAnalysisController extends Controller
                     99 => ['impact' => 'Severe: Paglalagas sanhi ng pag-kain ng mga uod sa halaman, na humahantong sa malaking pagkawala ng pananim at pagbawas ng ani. Maaari itong makaapekto sa mga pananim tulad ng mga kamatis, paminta, at talong.'],
                 ];
                 
-                // Define the mapping of prediction indices to solutions
                 $solutionMapping = [
                     0 => 'Alisin ang mga apektadong bahagi ng halaman at ayusin ang daloy ng hangin. Gumamit ng copper-based bactericides bilang pang-iwas. Ang mga copper-based bactericides ay epektibong nagpo-protekta laban sa bacterial diseases sa mga halaman at nakakatulong sa pagpigil ng pagkalat ng impeksyon.',
                     1 => 'Mag-apply ng insecticides at fungicides upang mapigilan ang mga peste at mga fungal disease. Ang mga produkto ay makakatulong upang kontrolin ang mga peste at fungi na maaaring magdulot ng sakit sa mga halaman. Siguraduhing sundin ang tamang mga tagubilin upang maiwasan ang labis na paggamit ng kemikal na maaaring makapinsala sa kapaligiran.',
@@ -378,21 +374,21 @@ class ImageAnalysisController extends Controller
                 ];
                 
                 
- // Retrieve the disease name, description, and solution based on the prediction index
+
  $disease = $diseaseMapping[$predictionIndex] ?? ['name' => 'Unknown Disease', 'description' => 'No description available.'];
  $solution = $solutionMapping[$predictionIndex] ?? 'No solution available.';
  $impact = is_array($potentialImpactMapping[$predictionIndex] ?? null) 
  ? $potentialImpactMapping[$predictionIndex]['impact'] 
  : 'No impact data available.'; 
  
- // Save the analysis result to the database
+
  ImageAnalysis::create([
     'disease_name' => $disease['name'],
     'detection_count' => 1,
     'average_confidence' => $confidence,
     'date_analyzed' => Carbon::today()->toDateString(),
     'total_analyses' => ImageAnalysis::count() + 1,
-    'notifications' => $notifications, // Pass notifications properly to the view
+    'notifications' => $notifications, 
 ]);
 
 
@@ -402,7 +398,7 @@ class ImageAnalysisController extends Controller
      'solution' => $solution,
      'confidence' => $confidence,
      'impact' => $impact,
-     'notifications' => $notifications, // Pass notifications properly to the view
+     'notifications' => $notifications,
 
  ]);
 } else {
@@ -412,8 +408,8 @@ class ImageAnalysisController extends Controller
      'solution' => 'No solution available.',
      'confidence' => 0,
      'impact' => 'No impact information available.',
-     'notifications' => $notifications, // Pass notifications properly to the view
-     // Default impact message
+     'notifications' => $notifications, 
+    
 
  ]);
 }

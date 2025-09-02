@@ -38,17 +38,14 @@
 <h1>Supply Requests for Approval</h1>
 <div class="mb-3">
     <div class="d-flex flex-wrap align-items-center">
-        <!-- Buttons -->
         <a href="{{ route('admin.admin.equipment.approval.index') }}" class="btn btn-info">Borrow Approval</a>
         <a href="{{ route('admin.admin.history-records') }}" class="btn btn-secondary">View All History Records</a>
 
-        <!-- Search Form -->
         <form action="{{ route('admin.admin.approval.index') }}" method="GET" class="form-inline d-flex mr-2 mb-2">
             <input type="text" name="search" value="{{ request('search') }}" class="form-control mr-2" placeholder="Search...">
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
 
-        <!-- Sort Dropdown -->
         <div class="dropdown mb-2">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sort by 
@@ -112,15 +109,12 @@
                         <button type="submit" class="btn btn-info">Mark as Released</button>
                     </form>
                 @elseif($request->is_released === 'Yes')
-                   <!-- No actions needed -->
                 @endif
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
-
-<!-- Custom Pagination -->
 <div class="d-flex justify-content-center">
     <ul class="pagination">
         @if ($supplyRequests->onFirstPage())
@@ -159,11 +153,11 @@
 
         @if(session('update'))
     Swal.fire({
-        icon: 'info', // You can change this to 'success' if preferred
+        icon: 'info', 
         title: 'Released!',
         text: '{{ session("update") }}',
         showConfirmButton: false,
-        timer: 3000 // Auto-close after 3 seconds
+        timer: 3000 
         });
     @endif
 
@@ -171,7 +165,7 @@
         Swal.fire({
             icon: 'error',
             title: 'Rejected!',
-            text: '{{ session("delete") }}', // Corrected from delete("delete") to session("delete")
+            text: '{{ session("delete") }}', 
             showConfirmButton: false,
             timer: 3000
         });

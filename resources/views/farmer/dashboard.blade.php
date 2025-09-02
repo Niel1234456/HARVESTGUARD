@@ -14,11 +14,11 @@
 <style>
 
 .weather-selector select {
-    -webkit-appearance: none; /* Hides dropdown icon in Safari */
-    -moz-appearance: none; /* Hides dropdown icon in Firefox */
-    appearance: none; /* Hides dropdown icon in other browsers */
-    background-image: none; /* Ensures no background arrow */
-    padding-right: 10px; /* Adjust padding to avoid clipping text */
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
+    background-image: none; 
+    padding-right: 10px; 
 }
 </style>
 <body>
@@ -105,7 +105,6 @@
             <div class="weather-selector">
                 <select id="location-selector" class="form-control">
                     <option value="Carmona, Cavite">Carmona, Cavite</option>
-                    <!-- Add more predefined locations as needed -->
                 </select>
             </div>
                 <div class="custom-location">
@@ -159,7 +158,7 @@
 <script>
      $(document).ready(function(){
         $('#hamburger-icon').on('click', function(){
-            $('#sidebar').toggleClass('active'); // Toggle sidebar visibility
+            $('#sidebar').toggleClass('active');
         });
     });
     

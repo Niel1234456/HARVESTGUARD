@@ -20,8 +20,6 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
                 {{ __('D.A ADMIN LOGIN') }}
             </h2>
-
-                        <!-- Error Pop-Ups -->
              @if ($errors->any())
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
@@ -33,14 +31,10 @@
                     
                 </script>
             @endif
-
-            <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
             <form id="login-form" method="POST" action="{{ route('admin.login') }}">
                 @csrf
-
-                <!-- Email Address -->
                 <div class="field">
                     <label for="email" class="input-label">
                         <i class="fas fa-envelope"></i> Email
@@ -48,8 +42,6 @@
                     <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-
-                <!-- Password -->
                 <div class="field relative">
                     <label for="password" class="input-label">
                         <i class="fas fa-lock"></i> Password
@@ -66,11 +58,6 @@
                         {{ __('Log in') }}
                     </x-primary-button>
                 </center>
-
-                <!-- Privacy Act Checkbox -->
-
-
-                <!-- Remember Me -->
                 <div class="form-footer">
 
 
@@ -95,8 +82,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Modal for Privacy Act -->
     <div id="privacy-act-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -113,42 +98,30 @@
     </div>
 
     <script>
-// Modal functionality
 const modal = document.getElementById("privacy-act-modal");
 const privacyCheckbox = document.getElementById("privacy");
 const termsCheckbox = document.getElementById("terms");
 const closeModal = document.querySelector(".close");
-
-// Show modal when Privacy Act checkbox is checked
 privacyCheckbox.addEventListener("change", function () {
     modal.style.display = privacyCheckbox.checked ? "block" : "none";
 });
-
-// Close modal when 'x' is clicked
 closeModal.addEventListener("click", function () {
     modal.style.display = "none";
 });
 
-// Close modal when clicking outside
 window.addEventListener("click", function (event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 });
-
-// Automatically close the modal when 'I understand the terms and conditions' is checked
 termsCheckbox.addEventListener("change", function () {
     if (termsCheckbox.checked) {
         modal.style.display = "none";
     }
 });
-
-// Validate checkboxes before submitting
 document.getElementById("login-form").addEventListener("submit", function (event) {
     if (!privacyCheckbox.checked || !termsCheckbox.checked) {
-        event.preventDefault(); // Prevent form submission
-
-        // Show a single alert for both checkboxes
+        event.preventDefault();
         alert("You must agree to the Privacy Act and understand the Terms and Conditions before proceeding.");
     }
 });

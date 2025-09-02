@@ -11,12 +11,12 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable(); // Allows for a longer description
+            $table->text('description')->nullable(); 
             $table->date('start');
             $table->date('end');
-            $table->time('start_time')->nullable(); // Stores time part of the start datetime
-            $table->time('end_time')->nullable(); // Stores time part of the end datetime
-            $table->timestamps(); // Adds created_at and updated_at columns
+            $table->time('start_time')->nullable(); 
+            $table->time('end_time')->nullable();
+            $table->timestamps(); 
         });
     }
 

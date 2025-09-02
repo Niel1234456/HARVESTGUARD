@@ -15,7 +15,6 @@
         border-radius: 5px;
     }
     
-    /* Modal Styling */
     .modal {
         display: none;
         position: fixed;
@@ -73,8 +72,6 @@
             </form>
         </center>
     </div>
-
-    <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
             <p>Password has been reset successfully!</p>
@@ -82,14 +79,12 @@
         </div>
     </div>
 
-    <!-- Error Modal -->
     <div id="errorModal" class="modal">
         <div class="modal-content">
             <p>{{ session('error') ?? $errors->first('password') }}</p>
             <button class="modal-button" onclick="document.getElementById('errorModal').style.display='none'">OK</button>
         </div>
     </div>
-    <!-- Mismatch Password Modal -->
 <div id="passwordMismatchModal" class="modal">
     <div class="modal-content">
         <p><strong>Error:</strong> Ang mga password ay hindi tugma!</p>

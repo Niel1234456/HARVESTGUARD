@@ -18,15 +18,12 @@ class Equipment extends Model
         parent::boot();
 
         static::creating(function ($equipment) {
-            // Code to run before creating equipment
         });
 
         static::updating(function ($equipment) {
-            // Code to run before updating equipment
         });
 
         static::deleting(function ($equipment) {
-            // Adjust related quantities before deleting
             BorrowRequest::where('equipment_id', $equipment->id)->delete();
         });
     }

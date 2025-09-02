@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EventController;
 
-
 Route::controller(EventController::class)->group(function(){
     Route::get('fullcalendar', [EventController::class, 'index'])->name('fullcalendar');
     Route::post('fullcalendarAjax', 'ajax');
@@ -33,8 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
     Route::get('/project/create', [ProjectController::class, 'create'])->name('projects.create'); // Fixed route name
     Route::post('/project', [ProjectController::class, 'store'])->name('projects.store'); // Fixed route name
     Route::get('/project/{project}', [ProjectController::class, 'show'])->name('projects.show'); // Fixed route name
@@ -42,9 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/project/{project}', [ProjectController::class, 'update'])->name('projects.update'); // Fixed route name
     Route::delete('/project/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy'); // Fixed route name
 
-
-
-// Route to handle PDF generation
 
 });
 

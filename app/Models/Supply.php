@@ -15,15 +15,12 @@ class Supply extends Model
         parent::boot();
 
         static::creating(function ($supply) {
-            // Code to run before creating a supply
         });
 
         static::updating(function ($supply) {
-            // Code to run before updating a supply
         });
 
         static::deleting(function ($supply) {
-            // Adjust related quantities before deleting
             SupplyRequest::where('supply_id', $supply->id)->delete();
         });
     }

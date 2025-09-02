@@ -16,11 +16,8 @@ use App\Http\Controllers\Admin\AdminForgotPasswordController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\AdminHelpController;
 
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
-
 
 
 Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(function () {
@@ -41,12 +38,12 @@ Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(functio
     })->middleware('guest:admin')->name('verification.notice');
     // Email Verification Routes
     Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
-        ->middleware(['auth:admin', 'signed']) // Use the 'signed' middleware
+        ->middleware(['auth:admin', 'signed']) 
         ->name('verification.verify');
 
     // Resend Verification Email Route
     Route::post('email/resend', [VerificationController::class, 'resend'])
-        ->middleware('auth:admin') // Ensure the user is authenticated before accessing
+        ->middleware('auth:admin') 
         ->name('verification.resend');
 });
 

@@ -9,17 +9,15 @@ class Notification extends Model
 {
     use HasFactory;
 
-    // Specify the table name (optional if using default naming conventions)
     protected $table = 'notifications';
 
-    // Specify which attributes are mass assignable
     protected $fillable = [
-        'farmer_id',    // The ID of the associated farmer
-        'message',      // The success or notification message
+        'farmer_id',    
+        'message',      
         'is_read',
         'link', 
         'type',
-        'action_type'   // Indicates whether the notification has been read
+        'action_type'   
     ];
 
     public function farmer()

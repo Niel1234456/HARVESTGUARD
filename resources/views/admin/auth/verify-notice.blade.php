@@ -6,7 +6,6 @@
     <title>Email Verification</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for dynamic effects */
         body {
             background: linear-gradient(120deg, #e0f7fa, #ffffff);
             font-family: 'Inter', sans-serif;

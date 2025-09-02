@@ -28,7 +28,6 @@
 <div class="container mt-4">
     <h1>Supplies Management</h1>
 
-    <!-- Search and Sort -->
 <div class="d-flex align-items-center justify-content-between mb-3">
     <div class="d-flex align-items-center me-3">
         <form method="GET" action="{{ route('admin.supplies.index') }}" class="d-flex">
@@ -40,7 +39,6 @@
     <div class="d-flex align-items-center">
     <form action="{{ route('admin.supplies.index') }}" method="GET" class="d-flex align-items-center">
 
-        <!-- Dropdown Button -->
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ request('sort') ? ucfirst(str_replace('_', ' ', request('sort'))) : 'Sort by' }}
@@ -64,7 +62,7 @@
     <thead>
 
                 <tr>
-                    <th>#</th> <!-- Row number -->
+                    <th>#</th> 
                     <th>Name</th>
                     <th>Quantity</th>
                     <th>Unit</th>
@@ -72,14 +70,13 @@
                     <th>Actions</th>
                 </tr>
                 <tr id="columnLabels">
-                    <!-- Column labels will be inserted here by JavaScript -->
                 </tr>
             </thead>
 
         <tbody>
             @foreach($supplies as $index => $supply)
             <tr>
-                <td>{{ $index + 1 }}</td> <!-- Dynamic row number -->
+                <td>{{ $index + 1 }}</td> 
                 <td>{{ $supply->name }}</td>
                 <td>{{ $supply->quantity }}</td>
                 <td>{{ $supply->unit }}</td>
@@ -109,7 +106,6 @@
 </div>
 
 
-<!-- Add Supply Modal -->
 <div class="modal fade" id="addSupplyModal" tabindex="-1" role="dialog" aria-labelledby="addSupplyModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -144,7 +140,6 @@
         </div>
     </div>
 </div>
-<!-- Delete Confirmation Modal -->
 <center><div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -168,7 +163,6 @@
     </div>
 </div></center>
 
-<!-- Edit Supply Modals -->
 @foreach($supplies as $supply)
 <div class="modal fade" id="editSupplyModal-{{ $supply->id }}" tabindex="-1" role="dialog" aria-labelledby="editSupplyModalLabel-{{ $supply->id }}" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -209,10 +203,8 @@
     </div>
 </div>
 @endforeach
-<!-- Pagination -->
 <div class="d-flex justify-content-center">
     <ul class="pagination">
-        <!-- Previous Page Link -->
         @if ($supplies->onFirstPage())
             <li class="page-item disabled">
                 <span class="page-link">Previous</span>
@@ -223,14 +215,12 @@
             </li>
         @endif
 
-        <!-- Page Number Links -->
         @for ($i = 1; $i <= $supplies->lastPage(); $i++)
             <li class="page-item {{ $supplies->currentPage() == $i ? 'active' : '' }}">
                 <a href="{{ $supplies->url($i) }}" class="page-link">{{ $i }}</a>
             </li>
         @endfor
 
-        <!-- Next Page Link -->
         @if ($supplies->hasMorePages())
             <li class="page-item">
                 <a href="{{ $supplies->nextPageUrl() }}" class="page-link">Next</a>
@@ -242,7 +232,6 @@
         @endif
     </ul>
 </div>
-<!-- Required Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -250,7 +239,6 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Show delete confirmation modal
         window.showDeleteModal = function (supplyId, supplyName) {
             $('#deleteSupplyId').val(supplyId);
             $('#actualSupplyName').val(supplyName);
@@ -258,7 +246,6 @@
             $('#deleteConfirmModal').modal('show');
         };
 
-        // Confirm delete button logic
         $('#confirmDeleteButton').click(function () {
             let enteredName = $('#confirmSupplyName').val().trim();
             let actualName = $('#actualSupplyName').val().trim();
@@ -271,17 +258,15 @@
             }
         });
 
-        // Prevent invalid quantity input
         document.querySelectorAll("input[name='quantity']").forEach(function (input) {
             input.addEventListener("input", function () {
                 if (this.value <= 0) {
                     alert("Quantity must be greater than zero.");
-                    this.value = ""; // Clear the input field
+                    this.value = ""; 
                 }
             });
         });
 
-        // Prevent form submission if quantity is invalid
         document.querySelectorAll("form").forEach(function (form) {
             form.addEventListener("submit", function (event) {
                 let quantityInputs = form.querySelectorAll("input[name='quantity']");
@@ -295,12 +280,10 @@
             });
         });
 
-        // Sidebar toggle
         $('#hamburger-icon').on('click', function () {
             $('#sidebar').toggleClass('active');
         });
 
-        // Display column letters (Excel-like)
         const columns = ['#', 'Name', 'Quantity', 'Unit', 'Image', 'Actions'];
         const columnLabelsRow = document.getElementById('columnLabels');
 
@@ -321,7 +304,6 @@
             });
         }
 
-        // SweetAlert2 Notifications
         @if(session('update'))
             Swal.fire({
                 icon: 'info',
