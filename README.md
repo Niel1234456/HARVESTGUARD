@@ -206,7 +206,7 @@ Results displayed back on frontend
 Users receive notifications and reports
 
 🔄 System Flow Diagram (Text-Based)
-          ┌──────────────┐
+                  ┌──────────────┐
           │   Farmer /   │
           │ Administrator│
           └─────┬────────┘
@@ -251,6 +251,7 @@ Users receive notifications and reports
                         │   Farmer /   │
                         │ Administrator│
                         └──────────────┘
+
 
 🧪 Research & Evaluation
 
