@@ -120,31 +120,6 @@ Mobile-friendly bottom navigation for key actions
 WORKFLOW
 Farmer/Admin → Frontend → Backend API (Laravel) → Database / ML / Analytics → Frontend → Notifications & Reports
 
-🔄 SYSTEM FLOW DIAGRAM
-          ┌──────────────┐
-          │   Farmer /   │
-          │ Administrator│
-          └─────┬────────┘
-                │
-                ▼
-         ┌───────────────┐
-         │   Web Frontend │
-         │ (UI / Dashboard) │
-         └─────┬─────────┘
-                │
-                ▼
-         ┌───────────────┐
-         │ Backend API    │
-         │ (Laravel)      │
-         └─────┬─────────┘
-   ┌────────────┼─────────────┐
-   ▼            ▼             ▼
- Database      Analytics    ML / Image
- (MySQL)      Engine        Recognition
-                        (Python / Flask)
-
-
-
 🧰 TECH STACK
 | Layer                 | Technology                                                   |
 | --------------------- | ------------------------------------------------------------ |
