@@ -1,7 +1,7 @@
-🌾 HARVESTGUARD
-Decision Support System for Agricultural Monitoring and Inventory Management
+🌾 HARVESTGUARD: A Decision Support System for the City Agriculture Office of Carmona Cavite With Image Recognition Technology
 
 📌 OVERVIEW
+
 HarvestGuard is a decision support system (DSS) designed for the Department of Agriculture – Office of Carmona, aimed at:
 Monitoring crop yields
 Detecting plant diseases
