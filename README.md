@@ -4,41 +4,37 @@ A Decision Support System for Agricultural Monitoring and Inventory Management
 
 📌 Overview
 
-HarvestGuard is a comprehensive Decision Support System (DSS) designed for the Department of Agriculture – Office of Carmona. The system helps farmers and administrators efficiently monitor crop yields, detect plant diseases, and manage agricultural inventory and equipment.
+HarvestGuard is a decision support system (DSS) designed for the Department of Agriculture – Office of Carmona, aimed at:
 
-By integrating image recognition, descriptive analytics, and real-time data tracking, HarvestGuard supports data-driven decision-making to improve agricultural productivity and resource management.
+Monitoring crop yields
+
+Detecting plant diseases
+
+Managing agricultural inventory and equipment
+
+It integrates machine learning, descriptive analytics, and real-time tracking to support data-driven decision-making and efficient resource management.
 
 🎯 Objectives
-
-Improve monitoring of crop yields and field conditions
-
-Assist farmers in early detection of plant diseases
-
-Streamline inventory and equipment management
-
-Provide actionable insights through descriptive analytics
-
-Enhance coordination between farmers and agricultural administrators
-
+Objective	Description
+Crop Monitoring	Improve monitoring of crop yields and field conditions
+Disease Detection	Early detection of plant diseases
+Inventory Management	Streamline equipment and supply management
+Data Analytics	Generate actionable insights for decision-making
+User Coordination	Enhance collaboration between farmers and administrators
 👥 Target Users
 
-Farmers – for crop monitoring, disease detection, and supply requests
+Farmers – Monitor crops, detect diseases, request equipment
 
-Administrators – for inventory control, analytics, and decision support
+Administrators – Manage inventory, review analytics, approve requests
 
 🛠️ Main Functions
-1. 🌱 Crop & Disease Monitoring
+1️⃣ 🌱 Crop & Disease Monitoring
 
-Purpose: Helps farmers detect plant diseases early to prevent crop loss.
-How it works:
+Upload or capture crop images
 
-Farmers upload or capture crop images using the system.
+ML model analyzes images for diseases
 
-The system sends images to the ML API (Python/Flask).
-
-Machine learning models analyze images and detect potential diseases.
-
-The system provides:
+Returns:
 
 Disease name
 
@@ -46,223 +42,133 @@ Effects on crops
 
 Recommended solutions
 
-Impact: Reduces crop damage and supports timely intervention.
+Impact: Prevents crop loss and enables timely interventions.
 
-2. 📊 Descriptive Analytics
+2️⃣ 📊 Descriptive Analytics
 
-Purpose: Provides actionable insights from collected data.
-How it works:
+Collects crop yield, inventory, and request data
 
-The backend collects crop yield data, inventory usage, and request history.
+Generates charts & summaries
 
-Analytics engine generates:
+Dashboard visualization for farmers and admins
 
-Charts (e.g., crop trends, inventory status)
+Impact: Data-driven decision-making and efficient resource allocation.
 
-Summary statistics
+3️⃣ 📦 Inventory Management
 
-Data is displayed in dashboards for both farmers and administrators.
+Real-time tracking of supplies and equipment
 
-Impact: Supports informed decision-making and efficient resource allocation.
+Updates automatically with usage and returns
 
-3. 📦 Inventory Management
+Alerts when stock is low
 
-Purpose: Tracks agricultural supplies and equipment in real-time.
-How it works:
+Impact: Prevents shortages and ensures availability.
 
-Administrators and farmers can view stock levels.
+4️⃣ 🧾 Equipment Borrowing System
 
-Inventory is updated automatically when:
+Submit borrow requests with quantity & return date
 
-Items are borrowed
+Tracks borrowing status and history
 
-Supplies are used
+Impact: Streamlines equipment allocation and accountability.
 
-Items are returned
+5️⃣ 📄 Report Generation
 
-Alerts notify administrators when stock is low.
+Convert monitoring and inventory reports to PDF
 
-Impact: Prevents stock shortages and ensures equipment availability.
-
-4. 🧾 Equipment Borrowing System
-
-Purpose: Allows farmers to request and borrow agricultural equipment.
-How it works:
-
-Farmers select equipment, quantity, and return date.
-
-Requests are submitted through the system for approval.
-
-System tracks borrowing history and current status.
-
-Impact: Streamlines equipment allocation and ensures accountability.
-
-5. 📄 Report Generation
-
-Purpose: Generates formal reports for submission and record-keeping.
-How it works:
-
-Farmers can convert their crop monitoring and inventory reports into PDFs.
-
-Reports include:
-
-Crop status
-
-Disease detection results
-
-Borrowed equipment logs
-
-PDF reports can be submitted to administrators directly.
+Submit reports to administrators
 
 Impact: Simplifies documentation and ensures transparency.
 
-6. 🔔 Notifications & Status Updates
+6️⃣ 🔔 Notifications & Status Updates
 
-Purpose: Keeps users informed of actions and system events.
-How it works:
+Real-time alerts for:
 
-Sends notifications for:
-
-Borrow request approvals
+Request approvals
 
 Inventory updates
 
 Disease detection results
 
-Users see real-time status updates on dashboards.
+Impact: Improves communication and reduces delays.
 
-Impact: Improves communication and reduces delays in decision-making.
-
-🧰 Tech Stack
-🌐 Frontend
-
-HTML5, CSS3, JavaScript
-
-Bootstrap / Tailwind CSS
-
-jQuery & AJAX
-
-⚙️ Backend
-
-Laravel (PHP)
-
-Composer
-
-🧠 Machine Learning & Image Recognition
-
-Python
-
-Flask API
-
-ML models for plant disease detection
-
-Google Cloud Vision API (optional)
-
-🗄️ Database
-
-MySQL
-
-📊 Analytics & Reporting
-
-Chart.js / other chart libraries
-
-PDF generation
-
-🔐 Tools & Utilities
-
-Git & GitHub
-
-Postman
-
-XAMPP / Laragon
-
-🖌️ Design
+🖌️ Design & Architecture
 🏗️ System Architecture
 
 MVC (Model-View-Controller) using Laravel
 
 Models → Database
 
-Controllers → Business logic
+Controllers → Business Logic
 
-Views → User interface
+Views → Frontend/UI
 
-🎨 UI / UX Design
+🎨 UI / UX
 
-Responsive design for desktop, tablet, mobile
+Responsive design (desktop, tablet, mobile)
 
-Clear call-to-action buttons and interactive dashboards
+Interactive dashboards and clear call-to-action buttons
 
-🔄 Workflow Design
+Mobile bottom navigation for key actions
 
-Users interact with frontend
+🔄 Workflow
+Farmer/Admin → Frontend → Backend API (Laravel) → Database / ML / Analytics → Frontend → Notifications & Reports
 
-Backend API handles requests
-
-Backend communicates with Database, ML API, and Analytics engine
-
-Results displayed back on frontend
-
-Users receive notifications and reports
-
-🔄 System Flow Diagram (Text-Based)
-                  ┌──────────────┐
+🔄 System Flow Diagram
+          ┌──────────────┐
           │   Farmer /   │
           │ Administrator│
           └─────┬────────┘
                 │
-                │ Interacts with
                 ▼
          ┌───────────────┐
          │   Web Frontend │
-         │ (UI / Forms / │
-         │   Dashboard)  │
+         │ (UI / Dashboard) │
          └─────┬─────────┘
                 │
-                │ Sends Requests / Uploads Data
                 ▼
          ┌───────────────┐
-         │   Backend API  │
-         │   (Laravel)    │
+         │ Backend API    │
+         │ (Laravel)      │
          └─────┬─────────┘
-                │
    ┌────────────┼─────────────┐
-   │            │             │
    ▼            ▼             ▼
-┌────────┐  ┌──────────┐  ┌─────────────┐
-│ Database│  │ Analytics│  │ ML / Image │
-│  MySQL │  │  Engine  │  │ Recognition│
-└────────┘  └──────────┘  │ (Python /  │
-                          │   Flask)    │
-                          └─────┬──────┘
-                                │
-                                ▼
-                         ┌───────────────┐
-                         │ Web Frontend  │
-                         │ (Displays:    │
-                         │ Crop Status,  │
-                         │ Disease Info, │
-                         │ Reports,      │
-                         │ Inventory)    │
-                         └─────┬─────────┘
-                               │
-                               ▼
-                        ┌──────────────┐
-                        │   Farmer /   │
-                        │ Administrator│
-                        └──────────────┘
+ Database      Analytics    ML / Image
+ (MySQL)      Engine        Recognition
+                        (Python / Flask)
 
-
+🧰 Tech Stack
+Layer	Technology
+Frontend	HTML5, CSS3, JavaScript, Bootstrap/Tailwind, jQuery, AJAX
+Backend	Laravel (PHP), Composer
+Machine Learning	Python, Flask, ML Models, Google Cloud Vision API (optional)
+Database	MySQL
+Analytics & Reporting	Chart.js, PDF Generation
+Tools	Git & GitHub, Postman, XAMPP / Laragon
 🧪 Research & Evaluation
 
-Evaluates effectiveness in crop monitoring, disease detection, inventory management
-Measures user satisfaction: usefulness, functionality, reliability, ease of use
+Effectiveness in crop monitoring & disease detection
 
+Inventory management efficiency
+
+User satisfaction: usefulness, functionality, reliability, ease of use
+
+🚀 Future Enhancements
+
+Predictive crop yield analytics
+
+Mobile application support
+
+Offline functionality for remote areas
+
+SMS-based notifications
+
+Expanded ML disease dataset
 
 👨‍💻 Developer
 
 Niel Joseph M. Samar
-Bachelor of Science in Information Technology
+BSc Information Technology
 Polytechnic University of the Philippines – San Pedro Campus
 
 📄 License
