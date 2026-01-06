@@ -1,66 +1,269 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🌾 HarvestGuard
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Decision Support System for Agricultural Monitoring and Inventory Management
 
-## About Laravel
+📌 Overview
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+HarvestGuard is a comprehensive Decision Support System (DSS) designed for the Department of Agriculture – Office of Carmona. The system helps farmers and administrators efficiently monitor crop yields, detect plant diseases, and manage agricultural inventory and equipment.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+By integrating image recognition, descriptive analytics, and real-time data tracking, HarvestGuard supports data-driven decision-making to improve agricultural productivity and resource management.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+🎯 Objectives
 
-## Learning Laravel
+Improve monitoring of crop yields and field conditions
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Assist farmers in early detection of plant diseases
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Streamline inventory and equipment management
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Provide actionable insights through descriptive analytics
 
-## Laravel Sponsors
+Enhance coordination between farmers and agricultural administrators
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+👥 Target Users
 
-### Premium Partners
+Farmers – for crop monitoring, disease detection, and supply requests
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Administrators – for inventory control, analytics, and decision support
 
-## Contributing
+🛠️ Main Functions
+1. 🌱 Crop & Disease Monitoring
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Purpose: Helps farmers detect plant diseases early to prevent crop loss.
+How it works:
 
-## Code of Conduct
+Farmers upload or capture crop images using the system.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The system sends images to the ML API (Python/Flask).
 
-## Security Vulnerabilities
+Machine learning models analyze images and detect potential diseases.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+The system provides:
 
-## License
+Disease name
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Effects on crops
+
+Recommended solutions
+
+Impact: Reduces crop damage and supports timely intervention.
+
+2. 📊 Descriptive Analytics
+
+Purpose: Provides actionable insights from collected data.
+How it works:
+
+The backend collects crop yield data, inventory usage, and request history.
+
+Analytics engine generates:
+
+Charts (e.g., crop trends, inventory status)
+
+Summary statistics
+
+Data is displayed in dashboards for both farmers and administrators.
+
+Impact: Supports informed decision-making and efficient resource allocation.
+
+3. 📦 Inventory Management
+
+Purpose: Tracks agricultural supplies and equipment in real-time.
+How it works:
+
+Administrators and farmers can view stock levels.
+
+Inventory is updated automatically when:
+
+Items are borrowed
+
+Supplies are used
+
+Items are returned
+
+Alerts notify administrators when stock is low.
+
+Impact: Prevents stock shortages and ensures equipment availability.
+
+4. 🧾 Equipment Borrowing System
+
+Purpose: Allows farmers to request and borrow agricultural equipment.
+How it works:
+
+Farmers select equipment, quantity, and return date.
+
+Requests are submitted through the system for approval.
+
+System tracks borrowing history and current status.
+
+Impact: Streamlines equipment allocation and ensures accountability.
+
+5. 📄 Report Generation
+
+Purpose: Generates formal reports for submission and record-keeping.
+How it works:
+
+Farmers can convert their crop monitoring and inventory reports into PDFs.
+
+Reports include:
+
+Crop status
+
+Disease detection results
+
+Borrowed equipment logs
+
+PDF reports can be submitted to administrators directly.
+
+Impact: Simplifies documentation and ensures transparency.
+
+6. 🔔 Notifications & Status Updates
+
+Purpose: Keeps users informed of actions and system events.
+How it works:
+
+Sends notifications for:
+
+Borrow request approvals
+
+Inventory updates
+
+Disease detection results
+
+Users see real-time status updates on dashboards.
+
+Impact: Improves communication and reduces delays in decision-making.
+
+🧰 Tech Stack
+🌐 Frontend
+
+HTML5, CSS3, JavaScript
+
+Bootstrap / Tailwind CSS
+
+jQuery & AJAX
+
+⚙️ Backend
+
+Laravel (PHP)
+
+Composer
+
+🧠 Machine Learning & Image Recognition
+
+Python
+
+Flask API
+
+ML models for plant disease detection
+
+Google Cloud Vision API (optional)
+
+🗄️ Database
+
+MySQL
+
+📊 Analytics & Reporting
+
+Chart.js / other chart libraries
+
+PDF generation
+
+🔐 Tools & Utilities
+
+Git & GitHub
+
+Postman
+
+XAMPP / Laragon
+
+🖌️ Design
+🏗️ System Architecture
+
+MVC (Model-View-Controller) using Laravel
+
+Models → Database
+
+Controllers → Business logic
+
+Views → User interface
+
+🎨 UI / UX Design
+
+Responsive design for desktop, tablet, mobile
+
+Clear call-to-action buttons and interactive dashboards
+
+🔄 Workflow Design
+
+Users interact with frontend
+
+Backend API handles requests
+
+Backend communicates with Database, ML API, and Analytics engine
+
+Results displayed back on frontend
+
+Users receive notifications and reports
+
+🔄 System Flow Diagram (Text-Based)
+          ┌──────────────┐
+          │   Farmer /   │
+          │ Administrator│
+          └─────┬────────┘
+                │
+                │ Interacts with
+                ▼
+         ┌───────────────┐
+         │   Web Frontend │
+         │ (UI / Forms / │
+         │   Dashboard)  │
+         └─────┬─────────┘
+                │
+                │ Sends Requests / Uploads Data
+                ▼
+         ┌───────────────┐
+         │   Backend API  │
+         │   (Laravel)    │
+         └─────┬─────────┘
+                │
+   ┌────────────┼─────────────┐
+   │            │             │
+   ▼            ▼             ▼
+┌────────┐  ┌──────────┐  ┌─────────────┐
+│ Database│  │ Analytics│  │ ML / Image │
+│  MySQL │  │  Engine  │  │ Recognition│
+└────────┘  └──────────┘  │ (Python /  │
+                          │   Flask)    │
+                          └─────┬──────┘
+                                │
+                                ▼
+                         ┌───────────────┐
+                         │ Web Frontend  │
+                         │ (Displays:    │
+                         │ Crop Status,  │
+                         │ Disease Info, │
+                         │ Reports,      │
+                         │ Inventory)    │
+                         └─────┬─────────┘
+                               │
+                               ▼
+                        ┌──────────────┐
+                        │   Farmer /   │
+                        │ Administrator│
+                        └──────────────┘
+
+🧪 Research & Evaluation
+
+Evaluates effectiveness in crop monitoring, disease detection, inventory management
+Measures user satisfaction: usefulness, functionality, reliability, ease of use
+
+
+👨‍💻 Developer
+
+Niel Joseph M. Samar
+Bachelor of Science in Information Technology
+Polytechnic University of the Philippines – San Pedro Campus
+
+📄 License
+
+Academic and research purposes. All rights reserved.
